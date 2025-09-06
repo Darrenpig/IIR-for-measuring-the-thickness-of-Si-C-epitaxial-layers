@@ -899,7 +899,7 @@ function plot_comprehensive_analysis(results, const, params, options)
     xlim([0, 25]);
     ylim([0, 25]);
     
-    sgtitle('第一问：红外干涉法SiC外延层厚度测量数学模型综合分析', 'FontSize', 16, 'FontWeight', 'bold');
+  %  sgtitle('第一问：红外干涉法SiC外延层厚度测量数学模型综合分析', 'FontSize', 16, 'FontWeight', 'bold');
     
     if options.save
         filename = fullfile(options.save_path, ['comprehensive_analysis.' options.figure_format]);
