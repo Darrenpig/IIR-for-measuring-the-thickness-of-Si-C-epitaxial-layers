@@ -1,0 +1,861 @@
+Results in Physics 51 (2023) 106727
+Available online 11 July 2023
+2211-3797/© 2023 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by￾nc-nd/4.0/).
+A method for measuring and calibrating the thickness of thin films based on 
+infrared interference technology 
+Jiaxing Sun a
+, Xinyu Li b
+, Haojie Zhang a
+, Jinlong Song c
+, Zhisong Li a,* 
+a College of Machine, Shanghai Dianji University, Shanghai 201306, PR China b School of Control and Computer Engineering, North China Electric Power University, Beijing 102206, PR China c FABXLAB (Ningbo) Semiconductor Equipment Co., Shanghai 201114, PR China 
+ARTICLE INFO 
+Keywords: 
+Film Thickness Measurement 
+Infrared interference 
+Surface profile detection 
+Non-uniform Fourier transform 
+Zernike fitting 
+Fizeau interference 
+ABSTRACT 
+Transparent thin films are critical industrial components widely used in advanced optics, microelectronics and 
+materials science, among other relevant fields. The rapid and stable measurement of sub-micron industrial film 
+thickness is of particular importance. In this study, a novel method based on the principles of infrared inter￾ference and laser profilometry is proposed to calculate the periodogram of the original spectrum and accurately 
+extract the maximum frequency. In addition, a high-precision, compact and low-cost thin-film thickness mea￾surement and calibration system is developed. This system achieves accurate measurement of single-layer film 
+thickness and adapts to correct errors caused by slight tilt due to mechanical vibration or misalignment during 
+film placement. Experimental data show that, compared to conventional infrared interference thickness mea￾surement systems, the use of the proposed maximum frequency extraction algorithm improves measurement 
+accuracy by approximately 90% and stability by approximately 70%. Furthermore, even when measuring the 
+thickness of films with inclined components, the use of the constructed thin film thickness measurement and 
+calibration system provides equivalent results. 
+Introduction 
+Chips, as the core components of electronic devices, play a crucial 
+role in many areas. During the chip manufacturing process, thin-film 
+substrates have a significant impact [1,2]. Not only do they provide a 
+stable foundation for the precise positioning and interconnection of the 
+chip’s functional components, but they also perform critical functions 
+such as mechanical support, thermal transfer and electrical insulation 
+[3,4]. The thickness of the selected thin film substrate is a critical 
+parameter in chip fabrication and applications [5]. This parameter 
+typically ranges from tens to hundreds of microns, depending on the 
+manufacturing requirements of the chip and the specific needs of the 
+desired application [6,7]. The thickness of the thin film substrate has a 
+direct impact on the performance and properties of the film and must 
+therefore be carefully considered and controlled during the design and 
+preparation process [8]. Firstly, an appropriate substrate thickness en￾sures the precise positioning and arrangement of the chip’s internal 
+components to achieve the desired circuit functionality. Secondly, the 
+uniformity and stability of the substrate thickness also has a significant 
+impact on the operational performance and reliability of the chip [9,10]. 
+Therefore, substrate thickness measurement is a critical task in the chip 
+manufacturing process. However, due to the extremely high precision 
+requirements of materials such as silicon, sapphire and silicon carbide, 
+combined with the influence of placement errors and environmental 
+noise, measurement errors are common [11,12]. As a result, micron￾level thickness measurement of thin-film substrates must meet the re￾quirements of efficient and fast industrial measurement while main￾taining high accuracy and reliability. 
+Scanning Electron Microscopy (SEM), Atomic Force Microscopy 
+(AFM) and Transmission Electron Microscopy (TEM) are available 
+methods for measuring the thickness of thin film substrates, all of which 
+can achieve nanometre-level accuracy [13,14]. However, their use is 
+limited by significant drawbacks such as potential damage to the 
+product, slow speed, complex operation, high cost and difficulty in 
+achieving on-line measurement. In contrast, optical measurement 
+methods effectively address these issues. Currently, the main optical 
+methods include X-ray, polarimetry and interferometry. In X-ray mea￾surement, the transmitted intensity decreases with increasing thickness, 
+while the scattered intensity behaves inversely. By measuring the 
+transmitted and scattered intensities and combining them with relevant 
+* Corresponding author. 
+E-mail address: song272808216@163.com (Z. Li). 
+Contents lists available at ScienceDirect 
+Results in Physics 
+journal homepage: www.elsevier.com/locate/rinp 
+https://doi.org/10.1016/j.rinp.2023.106727 
+Received 11 May 2023; Received in revised form 5 July 2023; Accepted 5 July 2023 
+Results in Physics 51 (2023) 106727
+2
+calculation models and algorithms, the thickness of the thin film can be 
+deduced [15]. Ellipsometry is a polarised light based technique where 
+ellipsometric parameters are obtained by measuring the relative 
+amplitude and phase changes of polarised light reflected from a material 
+surface [16]. These parameters contain information about the optical 
+properties of the sample and by fitting these parameters to the analysis a 
+more detailed quantitative description of the optical properties of the 
+sample can be obtained [17,18]. Interferometry is based on the principle 
+of light interference and determines the thickness of the thin film by 
+observing this interference phenomenon using spectrometers or in￾terferometers [19]. Compared to interferometry, both X-ray and ellips￾ometry provide higher accuracy in thickness measurement. However, 
+the X-ray method requires a high degree of surface smoothness for the 
+sample, which can lead to scattering and deviation during X-ray trans￾mission, affecting measurement accuracy, especially for films with 
+higher surface roughness. In addition, the high cost and radiation safety 
+issues make the X-ray method unsuitable for large-scale industrial pro￾duction [20]. Ellipsometry also has limitations when measuring thicker 
+films. At large film thicknesses, multiple reflections and scattering of 
+incident light within the film lead to complex changes in optical phase 
+and polarisation state, increasing the complexity and uncertainty of the 
+measurement [21]. Therefore, when performing ellipsometry measure￾ments on thicker films, the multiple reflection and scattering effects 
+need to be fully considered and the appropriate calibration and analysis 
+methods adopted to ensure accurate and reliable measurement results 
+[22,23]. As a result, both X-ray and ellipsometry methods have stringent 
+sample requirements and can only achieve better results when 
+measuring specific film samples. Infrared interferometry, which uses 
+near-infrared light as a light source, has a wide spectral coverage. It not 
+only matches the optical properties of most thin films, but also mini￾mises interference from ambient light [24]. Compared to other optical 
+methods, infrared interferometry can meet the measurement re￾quirements of different thin film materials and thickness ranges, making 
+it suitable for efficient, fast and highly accurate measurements in in￾dustrial production applications. 
+Currently, the measurement accuracy of infrared interferometry is 
+still limited by two important factors. Firstly, the extraction of the 
+maximum frequency from the raw spectrum is susceptible to distur￾bances such as mechanical vibration and ambient light, which conse￾quently reduces the measurement accuracy [25]. Secondly, infrared 
+interferometry requires that the plane of the thin film is perfectly 
+perpendicular to the incident beam [26]. However, in industrial pro￾duction, operations are often carried out in noisy environments to in￾crease production efficiency, which can result in small angular 
+deviations between the film and the incident beam due to equipment 
+vibration or operator error. Such small tilt angles significantly degrade 
+the measurement accuracy. For example, for a 500 µm thick film, even a 
+1◦ angle deviation from the incident beam can introduce an error of 
+approximately 0.3 µm in the final measurement result. However, in 
+many high-precision industrial production processes, this error cannot 
+be ignored as it has a significant impact on product quality and pro￾duction costs. Therefore, in the process of thickness measurement using 
+infrared interferometry, it is crucial to explore methods to achieve 
+precise extraction of the maximum frequency to improve measurement 
+accuracy and to implement rapid calibration to correct measurement 
+errors caused by the inherent tilt angles of the film in industrial 
+production. 
+To solve the problems found in current infrared interferometric 
+thickness measurement techniques, this paper proposes a new method 
+that can be applied to extract the maximum frequency and perform 
+adaptive correction of the measurement results in infrared interfero￾metric thickness measurement. This method combines the advantages of 
+both the infrared interferometry principle and the laser interferometry 
+principle, using an improved algorithm for maximum frequency 
+extraction to calculate the thickness of the film, and using laser inter￾ferometry to obtain the angle between the film and the incident light 
+beam, thus achieving adaptive correction of the measurement results. 
+Extensive experimental data show that this method not only overcomes 
+the limitations of traditional measurement methods, but also enables 
+more accurate measurement of film thickness for various materials, 
+while exhibiting strong anti-interference capability and insensitivity to 
+ambient noise, and demonstrating robustness applicable to different 
+measurement environments and material types. As a result, this method 
+has broad application prospects. 
+Measurement and calibration methods 
+Fig. 1 illustrates the overall optical path design of our proposal, 
+which consists of two systems, the thickness measurement system and 
+the thickness correction system, both connected to the computer. The 
+thickness measurement system uses an improved infrared interference 
+method to analyse the acquired raw spectra and calculate the thin film 
+thickness. On the other hand, the thickness correction system is based on 
+laser interference technology, which uses the Fizeau interference optical 
+path to detect the surface shape of the front surface of the thin film and 
+obtain its tilt component. Finally, the measurement results are adap￾tively corrected using the thickness correction formula. 
+Principle of infrared interferometric thickness measurement 
+Fig. 2 illustrates the principle of infrared interference thickness 
+measurement. In the theoretical model, the incident light is represented 
+by I0, the light reflected from the top surface of the thin film is repre￾sented by Ir1, and the light reflected from the bottom surface of the thin 
+film is represented by Ir2. These two reflected beams interfere with each 
+other inside the interference cavity and are finally collected by the op￾tical probe and presented as a raw spectrum in the spectrometer [27]. 
+The relationship between the intensity of the interference light I and the 
+wavelength λ can be expressed by the following formula: 
+I(λ) = a(λ) + b(λ)cos(
+2π
+λ
+Δ) (1) 
+where a(λ) is the background introduced by the profile of the light 
+source, b(λ) is the contrast influenced by the cavity length and the 
+reflection of the fibre ends. Δ is the difference in the optical range of the 
+two reflected beams and is expressed as: 
+Δ = 2ndcosθ (2) 
+Among these parameters, θ represents the angle of incidence, n the 
+refractive index of the film and d the thickness of the film. In industrial 
+production, vertical incidence is generally used, i.e. θ≈0◦. Therefore, the 
+expression of the interference intensity can be rewritten as 
+I(λ) = a(λ) + b(λ)cos(
+4πnd
+λ ) (3) 
+In Eq. (3), assuming that all parameters are fixed, the cosine term, 
+that is, the cosine relationship between the interference intensity I and 
+the reciprocal of the wavelength 1/λ, is mainly emphasized: 
+I∝cos(
+4πnd
+λ ) (4) 
+The general function graph is shown in Fig. 3, which corresponds to 
+the minimum value of the function graph when the two beams interfere 
+destructively, and the maximum value of the function graph when the 
+two beams interfere constructively. 
+From the general form of the cosine function cos(2πft), it can be 
+known that if 1/λ is considered as the time series t in equation (4), the 
+calculation formula for the thickness d can be expressed as: 
+d = f
+2n (5) 
+where f is the maximum frequency of the original spectrum signal and n 
+J. Sun et al. 
+J. Sun et al. Results in Physics 51 (2023) 106727
+Fig. 1. Design of the entire light path. 
+Fig. 2. Infrared Thickness Measurement Scheme. 
+Fig. 3. General plot of light intensity I as a function of wavelength λ. 
+3
+Results in Physics 51 (2023) 106727
+4
+is the refractive index of the measured film. Therefore, it is necessary to 
+convert the original spectrum signal from the time domain to the fre￾quency domain and extract the maximum frequency, and the accuracy 
+of the frequency extraction determines the accuracy of the thickness 
+calculation result. 
+Proposed algorithm: EMD-LSP algorithm 
+In order to accurately extract the maximum frequency of the raw 
+spectral signal, this paper proposes a novel algorithm called the EMD￾LSP Algorithm (ELA) to compute the periodogram of the original spec￾trum. The proposed method uses the Empirical Mode Decomposition 
+(EMD) algorithm to filter the raw spectrum and compute the Lomb￾Scargle periodogram of the decomposed high frequency components, 
+resulting in more accurate thickness measurements. The use of the EMD 
+algorithm effectively reduces the effect of ambient noise and improves 
+the computational efficiency of the LSP algorithm. The ELA algorithm 
+has better performance in handling non-stationary signals and is more 
+capable of eliminating noise interference, making it more suitable for 
+calculating the periodogram of the raw spectral signal. 
+Lomb-Scargle periodogram 
+A commonly used method for converting signals from the time 
+domain to the frequency domain is the Fast Fourier Transform (FFT), 
+which displays the amplitude and phase information of the signal on 
+different frequency components. However, FFT is only applicable to 
+stationary signals with constant or periodic frequency variation. As 
+shown in Fig. 3, the FFT method is no longer applicable to non￾stationary signals. Therefore, a time-domain to frequency-domain con￾version method suitable for non-stationary signals is required to extract 
+frequencies from the original spectral signal. 
+The Lomb-Scargle periodogram (LSP) is a widely used technique to 
+search for periodic signal frequencies in unevenly sampled data [28]. 
+LSP is based on the principle of discrete Fourier transform, fitting the 
+data using the least squares method and determining the trend of peri￾odic variation in the data and the fit of the assumed model based on the 
+root mean square error [29,30]. Here, we briefly review the Lomb￾Scargle periodogram method. A discrete uneven time series may be 
+seen as a collection of N experimental data {x(t1), x(t2), x(t3) … x(tn)} 
+where the time coordinates t1 < t2 < t3 < … < tn are arbitrary; that is, 
+without assuming a constant distance between consecutive measure￾ments [31]. The normalized periodogram as a function of the frequency 
+fj is defined as: 
+I(fj) = 1
+2s2
+{∑N
+i=1(x(ti) − mx)cos[
+2πfj(ti − τ)
+]2
+∑N
+i=1cos2[2πfj(ti − τ)]
++
+∑N
+i=1(x(ti) − mx)sin[
+2πfj(ti − τ)
+]2
+∑N
+i=1sin2
+[2πfj(ti − τ)] }
+(6) 
+and the parameter τ is defined by: 
+τ = 1
+4πf
+tan− 1
+(∑N
+i=1sin[4πfjti]
+∑N
+i=1cos[4πfjti]
+)
+(7) 
+where: mx and s
+2 are the estimated mean and variance of the data {x(t1), 
+x(t2), x(t3) … x(tn)}; fj is defined as the frequency of the period at each 
+sampling interval; the parameter τ makes the estimator I(fj) of Eq. (6) 
+time-invariant. I(fj) is the Lomb-Scargle periodogram for the frequency 
+fj. The peak horizontal coordinate of the I(fj) image is therefore the 
+maximum frequency of the periodic signal present in the original 
+spectrum. 
+Although the LSP algorithm can extract the maximum frequency f 
+more accurately, it cannot completely eliminate various noise in￾terferences caused by complex experimental environments, which are 
+often present in the low frequency components of the original spectrum 
+[32]. In addition, when using LSP to analyse the original spectrum, it is 
+necessary to determine the mean mx and variance s
+2 of the sample data, 
+which is unfavourable to improving the measurement efficiency. 
+Therefore, this approach chooses to pre-process the original spectral 
+signal using the EMD algorithm before calculating the periodic graph of 
+the original spectrum using the LSP algorithm. 
+Empirical mode decomposition 
+A new data-driven technique called Empirical Mode Decomposition 
+(EMD) has been introduced by Huang et al. [33]. EMD is a data-driven 
+method that decomposes a given signal x(t) into a series of intrinsic 
+mode functions (Imfs) through a sifting process, where each Imf repre￾sents a different time scale. EMD is a type of wavelet decomposition that 
+constructs subbands to separate different components of x(t) based on 
+the local time scale of the signal [34,35]. An IMF replaces the detail 
+signals of x(t) at a particular scale or frequency band. EMD selects the 
+highest frequency oscillation remaining in x(t) and generates an Imf if it 
+satisfies two conditions: (1) the number of extrema and the number of 
+zero crossings are equal or differ by at most one, and (2) the mean of the 
+envelope defined by the local maxima and the envelope defined by the 
+local minima is zero at each point [36,37]. Thus, each Imf contains lower 
+frequency oscillations than the previous one. EMD does not require a 
+predetermined filter or wavelet function, making it a fully data-driven 
+method. 
+Thickness calculation formula based on ELA 
+Firstly, Imf1 characterises the highest frequency component in the 
+original signal, and analysing Imf1 using LSP can maximise the retention 
+of thin film thickness information in the original spectral signal, 
+avoiding interference from ambient noise. Second, based on the char￾acteristics of the EMD algorithm, the mean of all Imf components is 
+approximately 0 and the variance is approximately 1. Therefore, with 
+the support of the EMD algorithm, Eq. (6) can be simplified as follows: 
+I(fj) = 1
+2
+{∑N
+i=1x(ti)cos[
+2πfj(ti − τ)
+]2
+∑N
+i=1cos2[2πfj(ti − τ)] +
+∑N
+i=1x(ti)sin[
+2πfj(ti − τ)
+]2
+∑N
+i=1sin2
+[2πfj(ti − τ)] }
+(8) 
+The complete ELA processing procedure is shown in Fig. 4. It is worth 
+noting that in Eq. (5), f represents the frequency after the fast Fourier 
+transform. Due to the symmetry of the Fourier transform, fj_peak = 2f. 
+Therefore, the final thickness measurement formula can be rewritten as 
+Eq. (1). 
+d = fj peak
+n (9) 
+Proposed thickness correction method 
+Adaptive film thickness correction is based on the laser interference 
+principle. In this approach, the front surface of the film is first inspected 
+and its tilt component is obtained using Fizeau interference optics, and 
+then the infrared interference results are incorporated into the film 
+thickness correction formula. 
+Obtaining film tilt components 
+In Fig. 1, two light beams emitted by the laser are converted into two 
+parallel beams after passing through the collimator lens. One of the 
+beams is reflected from the surface of the reference mirror, while the 
+other is reflected from the surface of the film to be measured. These two 
+coherent beams interfere with each other in the interference cavity to 
+form an interference pattern. By introducing a uniform phase change 
+using the PZT phase shifting technique, the interference fringes are 
+shifted in parallel, resulting in multiple ordered images of interference 
+fringe patterns. The interference pattern sequence is recorded by a 
+photodetector and the light intensity information is converted into 
+digital signals for subsequent calculation. 
+Fig. 5 illustrates the general procedure for processing the 
+J. Sun et al. 
+Results in Physics 51 (2023) 106727
+5
+interference pattern sequence. For the acquired interference pattern 
+sequence, phase extraction must first be performed to calculate its 
+wavefront phase. However, regardless of the phase extraction algorithm 
+used, it is necessary to use the arctan function to obtain the wavefront 
+phase distribution [38]. Therefore, when multiple interference fringes 
+appear in the same interference pattern, the phase distribution will cross 
+multiple periods, resulting in a 2π jump at the adjacent period [39]. 
+Obviously, such a “wrapped phase distribution” cannot represent the 
+true surface shape information of the film. Therefore, it is necessary to 
+stretch the discontinuous wavefronts and unfold them into complete 
+wavefronts, which is called “unwrapping calculation” [40]. Through 
+this process, the true phase distribution of the surface to be measured 
+can be obtained. Based on the true phase distribution, the tilt compo￾nents of the film in the x- and y-directions can be obtained. However, the 
+wavefront information obtained carries the tilt of the reference surface. 
+To further obtain the optical parameters of the test piece and the optical 
+element evaluation system, it is necessary to fit the wavefront phase 
+map, eliminate the tilt term and obtain various aberration situations. 
+Currently, Zernike polynomials are widely used in optical imaging 
+systems for detection purposes and serve as one of the main means of 
+wavefront fitting [41]. The Zernike fitting method used in this proposal 
+is based on a structure that includes a circular aperture and lacks a 
+rotationally symmetric axis. The aberration function of this method 
+contains not only cosine terms but also sine terms [42]. By transforming 
+this function, we obtain circular Zernike polynomials in spherical co￾ordinates as follows: 
+W(ρ, θ) = ∑
+j
+ajZj(ρ, θ) (10) 
+where W (ρ, θ) is the fitted wavefront, aj is the coefficient of each 
+polynomial term, ρ is the distance from the origin, and θ is the angle 
+relative to the origin. Expand the polynomial: 
+Zs(ρ, θ) =
+⎧
+⎪⎪⎪⎨
+⎪⎪⎪⎩
+√̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅
+2(n + 1)
+̅
+Rm
+n (ρ)cos(mθ), m > 0
+√̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅
+2(n + 1)
+̅
+Rm
+n (ρ)sin(mθ), m > 0
+√̅̅̅̅̅̅̅̅̅̅
+n + 1
+̅
+R0
+n(ρ), m = 0
+(11) 
+where n represents the highest order of ρ in the polynomial and m can be 
+referred to as the azimuthal frequency. Typically, only second order 
+spherical aberrations are considered, i.e. n = 7, resulting in a total of 36 
+Zernike terms [43]. Based on this, the orthogonal Zernike polynomial 
+Imf2
+Imf3
+Imf4
+Residual
+Imf
+I
+Thickness
+fj_peak
+Fig. 4. ELA algorithm processing. 
+x y
+Fig. 5. Thickness calibration scheme. 
+J. Sun et al. 
+Results in Physics 51 (2023) 106727
+6
+expansion coefficients can be calculated as follows: 
+aj = 1
+π
+∫ 1
+0
+∫ 2π
+0
+W(ρ, θ)Zj(ρ, θ)ρdρdθ (12) 
+These polynomial coefficients allow us to fit the wavefront phase 
+distribution to the corresponding aberration coefficients of the optical 
+elements. The second and third coefficient terms give the tilt of the 
+wavefront along the x and y axes respectively. 
+Thickness correction formula 
+During the actual measurement process, it is necessary to ensure that 
+the plane in which the film is located is perpendicular to the optical axis. 
+In other words, if the plane perpendicular to the optical axis is called the 
+reference plane, the film should be coplanar with the reference plane. 
+However, due to mechanical vibrations or operating errors, it is inevi￾table that the placement of the film will cause the film to be tilted with 
+respect to the reference plane. In the thickness correction model shown 
+in Fig. 5, the abscissa represents the incident ray of light intersecting the 
+top surface of the film at point O and the bottom surface at point A. The 
+length of OA is therefore the actual measured thickness. However, as the 
+perpendicular OB is inclined at an angle α to the top and bottom surfaces 
+of the film, it is the actual thickness of the film. According to the geo￾metric relationship, the thickness correction formula can be obtained: 
+dr = cosα⋅dm (13) 
+where dr is the actual film thickness, α is the tilt angle of the film relative 
+to the reference plane, and dm is the measured film thickness. Therefore, 
+as long as the angle between the film and the reference plane is obtained, 
+the measurement results can be corrected using the thickness correction 
+formula. 
+The previous section analysed and discussed the use of laser inter￾ference technology to obtain the tilt components of the thin film on the x 
+and y axes. These two tilt components together determine the angle 
+between the thin film and the reference plane. The normal vector →n of 
+the reference plane is (0, 0, 1), while the normal vector of the tilted thin 
+film can be regarded as the vector obtained by rotating the normal 
+vector of the reference plane by an angle around the x-axis and then by 
+an angle around the y-axis. Therefore, the normal vector →
+n′ of the in￾clined thin film can be expressed as follows: 
+n′ → = A⋅B⋅
+⎛
+⎝
+0
+0
+1
+⎞
+⎠ (14) 
+where matrices A and B are transformation matrices for rotating vectors 
+about the y-axis and the x-axis respectively. If a vector is rotated βx ra￾dians around the x-axis and βy radians around the y-axis, then the two 
+matrices can be expressed in the following form: 
+A =
+⎛
+⎝
+cosβy 0 sinβy
+0 1 0
+− sinβy 0 cosβy
+⎞
+⎠ (15) 
+B =
+⎛
+⎝
+1 0 0
+0 cosβx − sinβx
+0 sinβx cosβx
+⎞
+⎠ (16) 
+By combining Eqs. (14)–(16), the normal vector of the inclined film 
+plane can be obtained as n′ → = (cosasinb, − sina, cosacosb)
+T Using the 
+formula for calculating the angle between vectors, the angle α between 
+the film and the reference plane can be determined: 
+α = arccos
+→n ⋅ n′ →
+|
+→n |⋅| n′ →|
+= cosβxcosβy (17) 
+By combining Eqs. (13) and (17), the correction formula for the thin 
+film thickness can be obtained: 
+dr = cosβxcosβy⋅dm (18) 
+where dr is the actual thickness of the thin film, dm is the thickness 
+measured by infrared interference, and βx and βy are the inclination 
+components of the thin film on the x and y axes, respectively. 
+Based on the improved principle of infrared interference thickness 
+measurement and the principle of laser interference thickness correc￾tion, the overall process design of this scheme is shown in Fig. 6. 
+Experiments and results 
+To verify the feasibility of the proposed infrared interference thick￾ness measurement and adaptive calibration system, we constructed a 
+complete experimental setup and designed two independent experi￾ments: the infrared thickness measurement experiment and the inclined 
+thickness measurement experiment. 
+During the experiment, a Hako CRS 05-LHP-991 laser with a wave￾length of 632.8 nm was used as the laser source. A Basler acA2400-50gm 
+area CCD was used as the CCD detector, and a NAC2121 PZT phase 
+shifter from Core Tomorrow was used with a drive voltage of 200 V and 
+a displacement range of ±15%: 3.3 μm. The spectrometer is a Fourier 
+Transform Infrared (FTIR) spectrometer from Tianjin Gangdong Com￾pany, model FTIR-650, with an infrared light source in the wavelength 
+range of 960–1080 nm. In both experiments we used 6 sets of double￾sided polished sapphire substrate film samples provided by Shanghai 
+FabXlab Semiconductor Co., Ltd. Their atomic force microscopy images 
+are shown in Fig. 7. Based on the measurement results, the root mean 
+square roughness (Rq) of the substrate was determined to be 0.00467 
+μm, and the average roughness (Ra) was found to be 0.00302 μm. To 
+obtain accurate thickness values, we also commissioned a professional 
+semiconductor testing organisation to use an ellipsometer to measure 
+the thickness of these 6 sets of sapphire substrates. The results showed 
+thicknesses of 82.03 μm, 207.69 μm, 357.35 μm, 502.17 μm, 647.32 μm 
+and 751.88 μm respectively. We therefore consider these values to be 
+indicative of the true thickness. 
+Infrared thickness measurement experiment 
+The system performed infrared interferometric thickness measure￾ments on the above six sets of substrate film samples and evaluated the 
+accuracy and stability of the system’s measurements for these sample 
+thicknesses. During the experiment, each film was subjected to 50 raw 
+spectral acquisitions, which were transformed from the time domain to 
+the frequency domain using three signal analysis methods: FFT, LSP and 
+ELA, and the film thickness was calculated. The measurement results are 
+shown in Fig. 8. 
+In Fig. 8, the horizontal axis represents the experimental number of 
+film samples and the vertical axis represents the thickness measurement 
+results of the film samples. The orange dots represent the results 
+calculated using the FFT algorithm, the green dots represent the results 
+calculated using the LSP algorithm only, the blue dots represent the 
+results calculated using the proposed ELA algorithm, and he solid red 
+line represents the true thickness of the sample film as measured using 
+the ellipsometer. It can be seen that the ELA algorithm significantly 
+improves the accuracy and stability of the measurement data compared 
+to the FFT and LSP algorithms. In order to quantify the performance 
+improvement of the ELA algorithm compared to other algorithms, and to 
+more intuitively demonstrate the reliability and stability of the data, we 
+calculated the mean error and variance of the thickness of different films 
+after 50 measurements using the FFT, LSP and ELA algorithms, and 
+plotted them in a bar graph as shown in Fig. 9. 
+In Fig. 9(a), the vertical axis represents the error between the average 
+measured value and the true value of different film thicknesses, 
+J. Sun et al. 
+Results in Physics 51 (2023) 106727
+7
+Start Reflectance spectrum
+signal
+High frequency
+interference extraction
+Lomb-Scargle
+Periodogram
+Peak value extraction Thickness calculation Phase extraction and
+wavefront fitting
+Obtaining interferogram
+sequences
+End Achieving thickness
+correction
+Obtaining the tilt
+component
+Thickness correction
+formula
+Fig. 6. Programme flow chart. 
+Fig. 7. AFM diagram of a sapphire substrate. (a) 2D; (b), (c) 3D. 
+Fig. 8. Thickness measurement results for different film thicknesses. (a) 82.03 μm; (b) 207.69 μm; (c) 357.35 μm; (d) 502.17 μm; (e) 647.32 μm; (f) 751.88 μm. 
+J. Sun et al. 
+Results in Physics 51 (2023) 106727
+8
+measured in micrometres (μm). In Fig. 9(b), the vertical axis represents 
+the variance of the measurement results of different film thicknesses. 
+According to the calculations, the ELA algorithm improved the mea￾surement accuracy by approximately 87.92% and the stability of the 
+measurement results by 67.96% compared to the LSP algorithm. 
+Compared to the FFT algorithm, the ELA algorithm improved the mea￾surement accuracy by approximately 95.6% and the measurement result 
+stability by 93.86%. 
+Tilt thickness measurement experiment 
+For the inclined thickness measurement experiment, we selected the 
+six samples used in the infrared thickness measurement experiment with 
+thicknesses of 82.03 μm, 207.69 μm, 357.35 μm, 502.17 μm, 647.32 μm 
+and 751.88 μm, respectively. Based on the adaptive thickness correction 
+system, the experiment was performed on samples placed at different 
+angles relative to the measurement reference plane, and the ability of 
+the system to accurately measure the thickness of inclined samples was 
+evaluated. 
+Inclined film thickness measurement experiments 
+In this experiment, we used a piezoelectric ceramic rotating motor to 
+generate small angles for each film to simulate the placement deviation 
+in actual engineering measurement. The angles used were 1◦, 1.25◦, 
+1.75◦, 2◦, 2.25◦, 2.5◦, 2.75◦, 3◦, 3.25◦, 3.5◦, and 3.75◦. We also con￾ducted 50 thickness measurements for each of the six film samples, 
+obtained their raw spectra, and used FFT, LSP, and ELA algorithms to 
+calculate their thickness, as shown in Fig. 10. 
+To verify that the ELA algorithm still has high accuracy and stability 
+when the film samples have an inclined angle relative to the reference 
+plane, we calculated the mean error and variance of the above data, as 
+shown in Fig. 11. 
+Fig. 9. Analysis of data from thickness measurement experiments. (a) Mean error graph; (b) Variance graph. 
+Fig. 10. Results of tilted film thickness measurement experiments. (a) 82.03 μm; (b) 207.69 μm; (c) 357.35 μm; (d) 502.17 μm; (e) 647.32 μm; (f) 751.88 μm. 
+J. Sun et al. 
+Results in Physics 51 (2023) 106727
+9
+It is not difficult to see that even if the film samples have a small 
+inclined angle, the ELA algorithm can still maintain high accuracy and 
+stability. After calculation, we found that compared with LSP, the ELA 
+algorithm improved the measurement accuracy by approximately 
+83.09% and the measurement result stability by 74.51%. Compared to 
+FFT, the ELA algorithm improved the measurement accuracy by 
+approximately 95.26% and the measurement result stability by 90.03%. 
+Therefore, the ELA algorithm also performed well in the inclined 
+thickness measurement experiment. 
+Tilted film thickness calibration experiments 
+Based on the principle of laser interference thickness correction 
+proposed in this paper, the results of the inclined thin film thickness 
+measurement experiment were corrected. The tilt components of the 
+thin film in the x and y directions under different tilt angles were ob￾tained by surface shape detection on the front surface of the thin film, 
+and the specific data are shown in Table 1. 
+During the wavefront fitting process, the tilt components represented 
+by the Zernike coefficients are in radians, while the data in Table 1 have 
+been converted to degrees. The improved infrared interference thickness 
+measurement formula was used to measure the thickness of the thin film 
+with tilt components, and the measured results were corrected using the 
+thickness correction formula as shown in Fig. 12. 
+For a more intuitive comparison of the error between the corrected 
+and actual film thicknesses before and after correction, we calculated 
+the error histogram of each thin film sample at different tilt angles, as 
+shown in Fig. 13. In Fig. 13, the blue rectangle represents the error 
+before correction and the orange rectangle represents the error after 
+correction. It can be seen that for any thickness of the thin film, the 
+thickness correction system proposed in this paper can significantly 
+reduce the measurement error caused by inclination, especially for 
+thicker thin film samples where the effect is more significant. According 
+to the calculation, using the thickness correction system proposed in this 
+paper can improve the measurement accuracy of thin film samples with 
+tilt components by approximately 97.87%. 
+Discussion 
+This paper describes a thin film thickness measurement method 
+based on infrared interference and adaptive calibration. This method 
+includes an improved infrared interference thickness measurement 
+system and a thickness calibration system based on laser interference. 
+The method uses time-domain and frequency-domain transformations to 
+extract the maximum frequency of the original spectrum and calculate 
+the thickness of the film. It achieves thickness calibration by obtaining 
+the tilt component of the film through laser interference and wavefront 
+fitting technology. Compared to traditional infrared interference 
+methods, this method has the following advantages: firstly, the light 
+source bands used in the two systems are different, which avoids the 
+spectral overlap phenomenon in the infrared interference system. Sec￾ondly, it is convenient to operate. The two systems are controlled by a 
+computer, and the film sample does not need to be completely perpen￾dicular to the optical axis during the measurement process and can have 
+a slight tilt angle. Therefore, this method not only reduces measurement 
+errors, but also improves measurement efficiency. 
+However, there are still some issues that need to be discussed with 
+this method. As shown in Figs. 8 and 10, when comparing different al￾gorithms, the ELA algorithm can significantly reduce the measurement 
+error of any thickness of film sample compared to other algorithms. 
+However, when comparing thin film samples of different thicknesses, 
+the error reduced by the ELA algorithm is completely random and has no 
+obvious rules. This is determined by the characteristics of the LSP al￾gorithm. The LSP algorithm requires the manual setting of a frequency 
+range, i.e. the value of j in formula (8). The larger the value of j, the 
+larger the frequency range and the easier it is to extract the maximum 
+frequency of the original spectrum. However, if the frequency range is 
+too large, the calculation time will increase significantly, which is not 
+conducive to fast measurement in industrial production. Therefore, in 
+the actual measurement process, the frequency range of the LSP algo￾rithm should be minimised as much as possible within the acceptable 
+error range. 
+In formula (8), N represents the total number of samples, which 
+determines the maximum calculable range of the periodogram. In this 
+method, the number of samples in the original spectrum depends on the 
+resolution of the spectrometer, which determines the maximum thick￾ness measurement range. If the resolution is too low, direct analysis of 
+the original spectrum using the ELA algorithm will not produce any 
+obvious peaks in the periodogram. This is because the thickness of the 
+film sample exceeds the maximum range of the ELA algorithm. To 
+overcome this problem, we used cubic spline interpolation to pre￾process the original spectrum, with 2048 interpolation points. This en￾sures that the range of the ELA algorithm is greater than the thickness of 
+all the film samples in this experiment. 
+In formula (9), n represents the refractive index of the film. In actual 
+Fig. 11. Analysis of tilt thickness measurement experimental data. (a) Mean error graph; (b) Variance graph. 
+Table 1 
+Tilt components at different tilt angles. 
+1◦ 1.25◦ 1.5◦ 1.75◦ 2◦ 2.25◦ 2.5◦ 2.75◦ 3◦ 3.25◦ 3.5◦ 3.75◦
+Tilt angle (x) 0.7071 0.8839 1.0607 1.2375 1.4143 1.5911 1.7679 1.9447 2.1216 2.2984 2.4753 2.6521 
+Tilt angle (y) 0.0701 0.8839 1.0607 1.2375 1.4143 1.5911 1.7679 1.9447 2.1216 2.2984 2.4753 2.6521 
+J. Sun et al. 
+Results in Physics 51 (2023) 106727
+10
+measurements, the refractive index of the film sample will vary with 
+wavelength. Therefore, the value of n used in the calculation must be 
+chosen reasonably. In all the experiments carried out in this article, the 
+value of n was chosen based on the average refractive index values at the 
+maximum and minimum wavelengths. However, for many film mate￾rials, such as silicon and sapphire, the relationship between refractive 
+index and wavelength is not linear. Therefore, how to determine the 
+parameter n in formula (9) is a problem that needs to be investigated 
+further. 
+The EMD algorithm is a fully data-driven signal decomposition 
+method that cannot manually control the number of extracted modes. In 
+this study, extensive experiments have shown that for the thickness 
+detection of single-layer films, accurate thickness calculation can be 
+achieved by calculating the periodogram of the decomposed Imf1 
+Fig. 12. Experiment results for tilted film thickness correction. (a) 82.03 μm; (b) 207.69 μm; (c) 357.35 μm; (d) 502.17 μm; (e) 647.32 μm; (f) 751.88 μm. 
+Fig. 13. Analysis of tilted film thickness calibration experimental data. (a) 82.03 μm; (b) 207.69 μm; (c) 357.35 μm; (d) 502.17 μm; (e) 647.32 μm; (f) 751.88 μm. 
+J. Sun et al. 
+Results in Physics 51 (2023) 106727
+11
+component alone, and the measurement results fully meet the precision 
+requirements in industrial production. However, the EMD algorithm 
+may face challenges when measuring the thickness of double-layer and 
+multi-layer films. Firstly, in the case of double-layered films, if the 
+thicknesses of the two layers are very close or even equal, the EMD al￾gorithm may not completely separate these two frequencies. As a result, 
+when calculating the periodogram of the high frequency component of 
+Imf1, the two peaks may be very close or even completely overlapping, 
+making it extremely difficult to extract the maximum frequency. On the 
+other hand, if the thicknesses of the two layers are very different, the 
+thickness information of the thinner film may be hidden in the lower 
+frequency components, possibly in Imf2 or even Imf3. Therefore, relying 
+solely on the periodogram of Imf1 may not accurately extract the 
+thickness information of double-layered films. 
+To address this issue, we have used the following procedures in our 
+experiments to provide potential methods for mitigating mode mixing 
+that other researchers can refer to: (1) Reducing the signal sampling 
+rate: In our experiments, we used a high sampling rate to acquire the raw 
+spectral data. Before performing the EMD decomposition, we down￾sampled the original spectral signal. By reducing the sampling rate, we 
+effectively reduced the likelihood of frequency aliasing, thus improving 
+the accuracy and reliability of the mode decomposition. (2) Recon￾struction of the mode decomposition: After EMD decomposition, we 
+reconstructed each mode to ensure proper separation of the frequency 
+components within each mode. This process involved interpolation and 
+smoothing of each mode to minimise overlap and mixing between 
+modes. Through careful reconstruction steps, we sought to maintain 
+frequency consistency within each mode and minimise interference 
+between modes. (3) Frequency spectrum analysis: To comprehensively 
+evaluate the results of the EMD decomposition, we performed a detailed 
+analysis of the frequency spectra for each mode. By plotting spectro￾grams and observing the distribution of frequency components, we were 
+able to identify potential problems with mode mixing and make neces￾sary adjustments and corrections. This allowed us to more accurately 
+determine the primary frequency components within each mode, 
+resulting in more reliable results. 
+Conclusion 
+This paper presents a promising approach aimed at addressing the 
+issues of high-precision thin film thickness measurement and thickness 
+calibration. The proposed method combines the principles of infrared 
+interferometric thickness measurement and laser profilometry, enabling 
+precise measurement of chip substrate thickness and adaptive error 
+correction. Using the ELA algorithm proposed in this study, we 
+compared the accuracy and robustness of this method with traditional 
+infrared interferometry for thin film thickness measurement in infrared 
+thickness measurement systems. The results demonstrate that this 
+method offers higher measurement accuracy, improved robustness, and 
+a wider measurement range. Additionally, based on the thickness cali￾bration system, this method can eliminate measurement errors caused 
+by slight tilt angles resulting from equipment vibrations or placement 
+errors. This feature simplifies the measurement process, reduces pro￾duction costs, and significantly enhances measurement precision and 
+efficiency. Therefore, this method is highly suitable for meeting the fast 
+and efficient measurement demands in industrial production. 
+Author contribution statement 
+Jiaxing Sun, Zhisong Li, Haojie Zhang: Conceived and designed the 
+experiments; Performed the experiments; Analysed and interpreted the 
+data; Contributed reagents, materials, analysis tools or data; Wrote the 
+paper. Xinyu Li, Jinlong Song: Performed the experiments; Analysed and 
+interpreted the data; Contributed reagents, materials, analysis tools or 
+data; Wrote the paper. 
+Funding 
+This work was supported in part by the Natural Science Foundation 
+of Shanghai under Grant 21ZR1424600, in part by the National Natural 
+Science Foundation of China under Grant 51975116, and in part by the 
+Natural Science Foundation of Shanghai under Grant 21ZR1402900. 
+The authors would also like to thank the editors and reviewers for their 
+valuable suggestions and kind work. 
+Declaration of Competing Interest 
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper. 
+Data availability 
+No data was used for the research described in the article. 
+References 
+[1] Maniscalco B, Kaminski P, Walls J. Thin film thickness measurements using 
+scanning white light interferometry. Thin Solid Films 2014;550:10–6. 
+[2] Belgherbi O, Seid L, Lakhdari D, Chouder D, Akhtar MS, Saeed MA. Optical and 
+morphological properties of electropolymerized semiconductor polyaniline thin 
+films: effect of thickness. J Electron Mater 2021;50(7):3876–84. 
+[3] Matkovi´c A, Genser J, Lüftner D, Kratzer M, Gaji´c R, Puschnig P, et al. Epitaxy of 
+highly ordered organic semiconductor crystallite networks supported by hexagonal 
+boron nitride. Sci Rep 2016;6(1). 
+[4] Matsui T, Mori H, Inose Y, Kuromiya S, Takano K, Nakajima M, et al. Efficient 
+optical terahertz-transmission modulation in solution-processable organic 
+semiconductor thin films on silicon substrate. Jpn J Appl Phys 2016;55(3S2): 
+03DC12. 
+[5] Lee J, Jin J. Thickness and refractive index measurements of a thin-film using an 
+artificial neural network algorithm. Metrologia 2023;60(2):025001. 
+[6] Cho D-H, et al. High-speed wafer film measurement with heterogeneous optical 
+sensor system. Metrology, Inspection, and Process Control for Semiconductor 
+Manufacturing 2021;XXXV. 
+[7] Park J, Bae J, Jang Y-S, Jin J. Thickness measurements and uncertainty evaluation 
+of a multilayer thin-film sample using auxiliary single-layer samples. Metrologia 
+2023;60(2):025007. 
+[8] Hu B, et al. Epitaxial growth of 100-μ m thick M-type hexaferrite crystals on wide 
+bandgap semiconductor GaN/Al2O3 substrates. J Appl Phys 2014;115(17): 
+17A513. 
+[9] Cui F, Zhao X, Xu J, Tang B, Shang Q, Shi J, et al. Controlled growth and thickness￾dependent conduction-type transition of 2D ferrimagnetic Cr2S3 semiconductors. 
+Adv Mater 2020;32(4):1905896. 
+[10] Kumah DP, Ngai JH, Kornblum L. Epitaxial oxides on semiconductors: from 
+fundamentals to new devices. Adv Funct Mater 2020;30(18):1901597. 
+[11] Papastathopoulos E, Korner ¨ K, Osten W. Chromatic confocal spectral 
+interferometry with wavelet analysis. Optical Sensing II. SPIE; 2006. 
+[12] Karim A. Thin film heater for removable volatile protecting coatings. Sci. World J. 
+2013;2013:1–3. 
+[13] Güzelçimen F, et al. The effect of thickness on surface structure of rf sputtered TiO2 
+thin films by XPS, SEM/EDS, AFM and SAM. Vacuum 2020;182:109766. 
+[14] Ophus C. Four-dimensional scanning transmission electron microscopy (4D-STEM): 
+From scanning nanodiffraction to ptychography and beyond. Microsc Microanal 
+2019;25(3):563–82. 
+[15] de Almeida E, et al. Determination of the polymeric thin film thickness by energy 
+dispersive X-ray fluorescence and multivariate analysis. Spectrochim Acta B At 
+Spectrosc 2020;167:105818. 
+[16] Hilfiker JN, Hong N, Schoeche S. Mueller matrix spectroscopic ellipsometry. Adv 
+Opt Technol 2022;11(3–4):59–91. 
+[17] Tu X, Jiang L, Ibn-Elhaj M, Pau S. Design, fabrication and testing of achromatic 
+elliptical polarizer. Opt Express 2017;25(9):10355. 
+[18] Kim D, et al. High speed thin film thickness mapping by using dynamic 
+spectroscopic imaging ellipsometry. Optical Technology and Measurement for 
+Industrial Applications Conference 2022. SPIE; 2022. 
+[19] Gonzalez-Cano ´ A, Bernab´eu E. Automatic interference method for measuring 
+transparent film thickness. Appl Opt 1993;32(13):2292–4. 
+[20] Lyatun S, Zverev D, Ershov P, Lyatun I, Konovalov O, Snigireva I, et al. X-ray 
+reflecto-interferometer based on compound refractive lenses. J Synchrotron Radiat 
+2019;26(5):1572–81. 
+[21] Jiang L, et al. Patterned achromatic elliptical polarizer for short-wave infrared 
+imaging polarimetry. Opt Express 2022;30(2):1249–60. 
+[22] Chen C, et al. Imaging Mueller matrix ellipsometry with sub-micron resolution 
+based on back focal plane scanning. Optics Express 2021;29(20):32712–27. 
+[23] Grunewald T, Wurm M, Teichert S, Bodermann B, Reck J, Richter U. Measurement 
+of layer thicknesses with an improved optimization method for depolarizing 
+Mueller matrices. Meas Sci Technol 2020;31(11):115010. 
+J. Sun et al. 
+Results in Physics 51 (2023) 106727
+12
+[24] Mayerhofer ¨ TG, Pahlow S, Hübner U, Popp J. Removing interference-based effects 
+from infrared spectra–interference fringes re-revisited. Analyst 2020;145(9): 
+3385–94. 
+[25] Jiang Y. Fourier transform white-light interferometry for the measurement of fiber￾optic extrinsic Fabry-Perot interferometric sensors. IEEE Photon Technol Lett 2007; 
+20(2):75–7. 
+[26] Guo T, Chen Z, Li M, Wu J, Fu X, Hu X. Film thickness measurement based on 
+nonlinear phase analysis using a Linnik microscopic white-light spectral 
+interferometer. Appl Opt 2018;57(12):2955. 
+[27] Albert M, Combs J. Thickness measurement of epitaxial films by the infrared 
+interference method. J Electrochem Soc 1962;109(8):709. 
+[28] Zechmeister M, Kürster M. The generalised Lomb-Scargle periodogram-a new 
+formalism for the floating-mean and Keplerian periodograms. A & A 2009;496(2): 
+577–84. 
+[29] VanderPlas JT. Understanding the lomb–scargle periodogram. Astrophys J Suppl 
+Ser 2018;236(1):16. 
+[30] Hocke K, K¨
+ampfer N. Gap filling and noise reduction of unevenly sampled data by 
+means of the Lomb-Scargle periodogram. Atmos Chem Phys 2009;9(12):4197–206. 
+[31] Carpintero D. Analysis Techniques: the Lomb-Scargle Periodogram. Workshop 
+Series of the Asociacion Argentina de Astronomia. 2021. 
+[32] Liew A-C, Xian J, Wu S, Smith D, Yan H. Spectral estimation in unevenly sampled 
+space of periodically expressed microarray time series data. BMC Bioinf 2007;8(1). 
+[33] Boudraa A-O, Cexus J-C. EMD-based signal filtering. IEEE Trans Instrum Meas 
+2007;56(6):2196–202. 
+[34] Chatlani N, Soraghan JJ. EMD-based filtering (EMDF) of low-frequency noise for 
+speech enhancement. IEEE Trans Audio Speech Lang Process 2011;20(4):1158–66. 
+[35] Ram R, Mohanty MN. Comparative analysis of EMD and VMD algorithm in speech 
+enhancement. Int J Natural Comput Res (IJNCR) 2017;6(1):17–35. 
+[36] Flandrin P, Gonçalves P, Rilling G. EMD equivalent filter banks, from interpretation 
+to applications. In: Hilbert-Huang transform and its applications. World Scientific; 
+2014. p. 99–116. 
+[37] Klionskiy DM, Kaplun DI, Geppener VV. Empirical mode decomposition for signal 
+preprocessing and classification of intrinsic mode functions. Pattern Recognit 
+Image Anal 2018;28(1):122–32. 
+[38] Bünnagel R, Oehring H-A, Steiner K. Fizeau interferometer for measuring the 
+flatness of optical surfaces. Appl Opt 1968;7(2):331–5. 
+[39] Kajava T, Lauranto H, Salomaa R. Fizeau interferometer in spectral measurements. 
+JOSA B 1993;10(11):1980–9. 
+[40] Kajava T, Lauranto H, Friberg A. Interference pattern of the Fizeau interferometer. 
+JOSA A 1994;11(7):2045–54. 
+[41] van Brug H. Zernike polynomials as a basis for wave-front fitting in lateral shearing 
+interferometry. Appl Opt 1997;36(13):2788–90. 
+[42] Niu K, Tian C. Zernike polynomials and their applications. J Opt 2022;24(12): 
+123001. 
+[43] Wang F, Zhang Q, Wang H, Zhu D, Zhu H, Jia W, et al. An improved fitting method 
+for predicting the Zernike coefficient–wavelength curves. IEEE Photonics J 2021; 
+13(2):1–17. 
+J. Sun et al. 

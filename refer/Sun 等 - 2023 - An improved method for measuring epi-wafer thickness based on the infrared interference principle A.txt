@@ -1,0 +1,1026 @@
+Results in Physics 54 (2023) 107146
+Available online 31 October 2023
+2211-3797/© 2023 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by￾nc-nd/4.0/).
+An improved method for measuring epi-wafer thickness based on the 
+infrared interference principle: Addressing interference quality and 
+multiple interferences in double-layer structures 
+Jiaxing Sun a
+, Zhisong Li a,*
+, Haojie Zhang a
+, Jinlong Song b
+, Tianbao Zhai a 
+a College of Machine, Shanghai Dianji University, Shanghai 201306, PR China b FabXLab (Ningbo) Semiconductor Equipment Co.,Ltd, Shanghai 201114, PR China 
+ARTICLE INFO 
+Keywords: 
+Bilayer film thickness measurement 
+Infrared interferometry 
+Variational mode decomposition 
+Lomb-Scargle periodogram 
+One-dimensional signal processing 
+ABSTRACT 
+The precise measurement of the thickness of substrate and epitaxial layers in epi-wafers is essential in the 
+semiconductor chip fabrication process. This study presents a new method for measuring the thickness of epi￾wafers using Fourier Transform Infrared (FTIR) technology, which allows for precise, simultaneous, and fast 
+measurement of both substrate and epitaxial layers. To address the low accuracy of traditional FTIR techniques, a 
+novel VMD-LSP algorithm is introduced, capable of precisely extracting frequency components from the original 
+spectral signal to calculate the precise thickness of the substrate and epitaxial layers. This study also introduces 
+an adaptive spectral excision algorithm and a high-precision thickness extraction algorithm to handle variations 
+in the infrared light absorption of different epi-wafer materials, leading to weakened interference signals, and the 
+challenges that stem from the unique double-layer structure of the wafer. These algorithms efficiently reduce the 
+impact of poor spectral quality and multiple interferences on measurement results, resulting in improved mea￾surement accuracy and stability. During the experimental phase, we compared our results obtained by ellips￾ometry as truth to evaluate the accuracy and stability of our proposed method. The results show an 85% 
+reduction in measurement error and a 65% improvement in stability compared to traditional methods. As a 
+result, our method meets the need for fast and efficient epi-wafer thickness measurement in semiconductor chip 
+manufacturing, providing a feasible and effective solution to the challenge of epi-wafer thickness measurement. 
+Introduction 
+Chips are key components in electronic devices and play a crucial 
+role in various fields. In the chip manufacturing process, over 95 % of 
+integrated circuits and semiconductor devices are fabricated on epi￾wafers[1,2]. Epi-Wafers preparation includes substrate preparation and 
+epitaxial processes. Epitaxy processes are used to grow high-resistance 
+epitaxial layers on low-resistance substrates, overcoming the break￾down and saturation voltage drop problems of conventional silicon 
+semiconductor devices[3–5]. Appropriate substrate and epitaxial 
+thickness not only provide a stable foundation for the precise positioning 
+and interconnection of the chip’s functional components but also ensure 
+the precise positioning and arrangement of the chip’s internal elements, 
+thereby achieving the expected circuit functionality[6–8]. Conse￾quently, the thickness of the substrate and epitaxial layers is an impor￾tant parameter in the epi-wafer quality inspection process[9,10]. 
+Methods such as scanning electron microscopy (SEM) use thin elec￾tron beams to scan samples, producing clear images of sectional 
+morphology through the interaction between electron beams and sam￾ples[11]. However, such methods lack online measurement capabilities 
+and are not suitable for industrial production due to possible surface 
+damage and extended measurement times[12]. In contrast, optical 
+measurement methods effectively address these issues. Currently, the 
+primary optical measurement methods include ellipsometry and 
+Fourier-transform infrared (FTIR) spectroscopy. Spectroscopic Ellips￾ometry (SE) is a polarized light based measurement technique that is 
+widely used to measure surface structures and dimensional or optical 
+parameters of surface layers[13]. In this method, ellipsometer parame￾ters are obtained by measuring the relative amplitude and phase 
+changes of polarized light reflected from the material surface[14,15]. 
+However, for the measurement of optical films such as wafer samples, 
+calculations and fitting are required to obtain the optical parameters of 
+* Corresponding author. 
+E-mail address: song272808216@163.com (Z. Li). 
+Contents lists available at ScienceDirect 
+Results in Physics 
+journal homepage: www.elsevier.com/locate/rinp 
+https://doi.org/10.1016/j.rinp.2023.107146 
+Received 28 August 2023; Received in revised form 28 October 2023; Accepted 30 October 2023 
+Results in Physics 54 (2023) 107146
+2
+the film[16]. Therefore, spectroscopic ellipsometry is an indirect mea￾surement method, and the accuracy of its results depends not only on the 
+measurement accuracy of the ellipsometer itself, but also on the 
+appropriate selection of film structures, evaluation parameters and 
+dispersion models[17,18]. Furthermore, ellipsometry has limitations 
+when measuring thick films, ellipsometry methods display thickness 
+periodicity for films thicker than 10 μm[19]. Consequently, there are 
+multiple uncertain values for films with unknown range thicknesses, 
+which impedes rapid measurement[20]. Fourier Transform Infrared 
+interferometry is a technique that offers significant advantages for 
+measuring the thickness of optical films[21]. This method collects the 
+reflected spectrum formed by the interference of reflected light beams 
+from the upper and lower surfaces of a thin film, and then uses time￾domain-frequency-domain analysis methods such as Fourier transform 
+to calculate the maximum frequency of its reflected spectrum, thereby 
+obtaining the thickness information of the sample[22–24]. Although the 
+thickness measurement accuracy of Fourier transform infrared tech￾nology cannot match that of spectroscopic ellipsometry, this method 
+reduces the dependence on scattering models and simplifies the mea￾surement process, making it suitable for the optical properties of most 
+films[25,26]. In addition, this method is less affected by environmental 
+factors and is very suitable for situations where accurate and rapid 
+measurement is required in industrial production[27]. 
+In our prior research endeavors, we crafted a methodology predi￾cated upon Fourier-transform infrared technology, aimed at measuring, 
+and calibrating the thickness of single-layer semiconductor thin films 
+[28]. A plethora of experiments were undertaken, validating the 
+method’s suitability for gauging single-layer semiconductor film thick￾ness. Nonetheless, for the more commonly employed epitaxial wafers 
+within the semiconductor industry, employing this technique for 
+thickness measurement unveils substantial constraints. (1) Epitaxial 
+wafers in the semiconductor domain typically consist of a substrate with 
+a thickness on the order of hundreds of micrometers and an epitaxial 
+layer, often several ten micrometers or even thinner. These two strata 
+may utilize identical semiconductor materials or distinct ones. However, 
+the optical characteristics of the substrate and the epitaxial layer differ 
+due to the use of different semiconductor materials or different doping 
+concentrations. In Fourier transform infrared interference thickness 
+measurement, this is manifested as a difference in the infrared absorp￾tion ability of the substrate and the epitaxial layer. Therefore, when the 
+semiconductor material has a strong absorption ability for infrared light, 
+this leads to weak reflected light and poor interference quality. More￾over, currently prevalent SLED and LED light sources in the market do 
+not exhibit uniform power distribution within their spectral range. 
+Therefore, within lower-power spectral bands, interference phenomena 
+may not occur at all. (2) Similarly, owing to the dual-layer architecture 
+inherent to epitaxial wafers, when employing the method proposed in 
+our prior research, incident light often undergoes multiple reflections 
+within the epitaxial wafer. This occurrence results in the presence of 
+multiple thickness peaks within the frequency domain of the reflectance 
+spectrum, posing a challenge for the final thickness extraction. (3) In our 
+prior study, we employed Empirical Mode Decomposition (EMD) as a 
+high-pass filter. However, for dual-layer and even multi-layer semi￾conductor thin-film structures like epitaxial wafers, EMD is no longer a 
+viable choice. EMD is entirely data-driven, and the number of modes (K) 
+generated during decomposition is solely dictated by the sample data, 
+rendering it uncontrollable. Consequently, for single-layer thin films, we 
+could assume that the signal component representing thickness was 
+superimposed within the highest frequency mode, Imf1, extracted during 
+decomposition. Conversely, for multi-layer thin films, simultaneous 
+extraction of multiple thickness components is requisite. Continued use 
+of the EMD decomposition method could lead to different thickness 
+signal components being superimposed within various modes, falling 
+short of the rapid industrial measurement requisites. (4) In our prior 
+research, an accelerated computation technique for the Lomb-Scargle 
+Periodogram (LSP), as introduced by Press and Rybicki[29], was 
+employed. However, as precision requirements continue to escalate 
+within practical industrial production, a corresponding augmentation in 
+data sampling points becomes imperative. Existing Lomb-Scargle 
+Periodogram computation methods may fall short of meeting the effi￾ciency and rapid measurement demands prevalent in industrial pro￾duction. Addressing the aforementioned challenges encountered during 
+practical measurements necessitates further research and the develop￾ment of novel technologies and methodologies to facilitate the appli￾cation of infrared interference technology in measuring the thickness of 
+epitaxial semiconductor wafers. 
+This essay offers a swift, highly precise, and simultaneous method for 
+measuring the thickness of both the epi-wafer substrate and the epitaxial 
+layer, using the Fourier Transform Infrared (FTIR) interferometry prin￾ciples. Firstly, while dealing with the raw spectral signals, we introduce 
+an adaptive spectral excision algorithm that filters out lower-quality 
+spectral segments. This results in better accuracy of the subsequent 
+analysis. Secondly, during the transformation from time-domain to 
+frequency-domain, we propose the VLA (VMD-LSP Algorithm) method. 
+This algorithm accurately extracts primary frequency components from 
+the signal which represents thickness information. Thus, it enhances the 
+accuracy and reliability of the measurement results. Finally, while dis￾cussing thickness extraction, we propose a new high-precision thickness 
+extraction algorithm. This algorithm successfully eliminates noise 
+interference signals introduced by ambient light or mechanical vibra￾tions. It enables us to extract epi-wafer substrate and epitaxial layer 
+thickness with more accuracy, tackling the difficulties faced by tradi￾tional techniques in measuring multilayer film thickness. 
+Method 
+This chapter introduces the principles of measuring epi-wafer 
+thickness using FTIR technology and the innovative algorithms pro￾posed for this purpose. The VLA algorithm, the adaptive spectral exci￾sion algorithm, and the high-precision thickness extraction algorithm 
+are among the algorithms described in this chapter. They have been 
+designed to enhance the accuracy and reliability of measuring the 
+thickness of semiconductor epi-wafer substrates and epitaxial layers, 
+offering a solution for this purpose. 
+Principle of infrared interferometric thickness measurement 
+Fig. 1 demonstrates the interferometric thickness measurement 
+principle. Subfigure (a) presents an epi-wafer sample containing a thin 
+epitaxial layer and a comparatively thick substrate, resulting in three 
+reflective surfaces from these two dielectric layers. Therefore, the inci￾dent light (I0) passes through these three surfaces in sequence, under￾going reflection and resulting in interference within the interferometric 
+cavity. This ultimately leads to the creation of a reflection spectrum, as 
+illustrated in subfigure (b). The reflection spectrum (R) is mathemati￾cally represented as follows[27,30]: 
+⎧
+⎪⎨
+⎪⎩
+R(z, λ) = R1 + R2 + 2
+√̅̅̅̅̅̅̅̅̅̅̅
+R1⋅R2 ⋅cos(2
+λ
+πz
+)
+z = 2ndcosθ
+(1) 
+where R1 represents the background profile of the light source. R2 de￾notes the intensity of diffusely reflected interference beams within op￾tical elements like optical fibers and probes. z signifies the optical path 
+difference between the two reflected beams; λ represents the wavelength 
+of the light source, n signifies the refractive index of the medium be￾tween the two interfering beams, and d corresponds to the thickness of 
+the medium[31]. 
+FTIR technique deduces thin film thickness by analyzing the fre￾quency f of the reflected spectrum. In Equation (1), considering 1/λ as 
+time t, the optical path difference z becomes analogous to the frequency f 
+of a cosine signal. Consequently, through the computation of the 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+3
+frequency f in the reflected spectrum, thin film thickness can be solved 
+using Equation (1). 
+In the case of epi-wafer samples with a bilayer structure, three peaks 
+emerge upon frequency calculation of their reflective spectra, as illus￾trated in Fig. 1(c). These peaks correspond to the thickness of the 
+epitaxial layer, de, the thickness of the substrate, ds, and the sum of both 
+thicknesses, dsum, respectively. 
+An improved method of frequency calculation (VMD-LSP Algorithm) 
+According to equation (1), it is easy to see that if the wavelength λ is 
+viewed as a time increment t, then the reflection spectrum signal R is a 
+non-stationary signal whose oscillation frequency decreases with 
+increasing λ. Therefore, traditional Fourier transform methods cannot 
+meet the accuracy requirements when extracting the maximum fre￾quency of the reflection spectrum signal R. To accurately extract the 
+maximum frequency of the original spectral signal, this paper proposes a 
+method called VMD-LSP Algorithm (VLA). The method uses Variational 
+Mode Decomposition (VMD) to filter the original spectrum and calcu￾lates the Lomb-Scargle periodogram of the high-frequency component 
+after decomposition to achieve more accurate thickness calculation. By 
+using the VMD algorithm, we can effectively reduce the influence of the 
+infrared light source base signal, separate the cosine signal with thin film 
+thickness information from the interference signal generated by diffuse 
+reflection inside the optical fiber and optical probe, and improve the 
+calculation efficiency of LSP algorithm. Compared with Fast Fourier 
+Transform (FFT) method, VLA algorithm performs better in processing 
+non-stationary signals and can better eliminate noise interference, 
+making it more suitable for extracting the maximum frequency of the 
+original spectral signal. 
+Lomb-Scargle periodogram 
+The Lomb-Scargle periodogram (LSP), based on the discrete Fourier 
+transform, effectively identifies periodic components in non-uniform 
+time series[32,33]. Its central idea involves using sine functions to 
+non-linearly fit data sequences for estimating power spectral density. 
+For the reflected spectrum R(λi) obtained from the spectrometer, where i 
+= 1,2… N, the periodogram at frequency ’f’ is defined as[34,35]: 
+P(f) =
+{
+2
+1
+σ2
+[∑
+i
+(R(λi) − R )cos[2πf(λi − τ)]
+2 ]
+∑
+i
+cos2[2πf(λi − τ)]
++
+[∑
+i
+(R(λi) − R )sin[2πf(λi − τ)]
+2 ]
+∑
+i
+sin2
+[2πf(λi − τ)]
+}
+(2) 
+where R and σ2 are the mean and variance of the measurements, 
+respectively, given by: 
+R = 1
+N
+∑
+i
+R(λi), σ2 = N −
+1
+1
+∑
+i
+(R(λi) − R )
+2 (3) 
+and the time-offset τ is defined by: 
+τ = 1
+4πf
+tan− 1
+(∑
+i
+sin(4πf λi)
+∑
+i
+cos(4πf λi)
+)
+(4) 
+The major concern with the LSP algorithm lies in its computational 
+complexity. If the method of approximating trigonometric functions 
+using Taylor series expansion is employed, the overall computational 
+complexity can easily reach O(N2
+). Leroy B[36], in pursuit of enhanced 
+efficiency, leveraged the Fast Fourier Transform to refine the conven￾tional LSP algorithm. Without compromising solution accuracy, this 
+modification reduced the computational complexity to O(log N), 
+resulting in nearly a fivefold reduction in computation time. The Fast 
+LSP algorithm begins by defining four coefficients: 
+SR = ∑
+i
+(R(λi) − R )sin(2πf λi),CR = ∑
+i
+(R(λi) − R )cos(2πf λi)
+S2 = ∑
+i
+sin(4πf λi),C2 = ∑
+i
+cos(4πf λi) (5) 
+The refined LSP formula is as follows: 
+P(f) = 1
+2σ2
+{
+[CRcos(2πf τ) + SRsin(2πf τ)]2
+N + C2cos(4πf τ) + S2sin(4πf τ)
++ [SRcos(2πf τ) − CRsin(2πf τ)]2
+N − C2cos(4πf δ) − S2sin(4πf τ)
+}
+(6) 
+Variational mode decomposition 
+In 2013, Dragomiretskiy et al. proposed a novel completely non￾recursive variational mode decomposition (VMD) method. This 
+method transforms mode decomposition into a variational solution 
+problem and uses the alternating direction multiplier method for opti￾mization[37]. In the process of optimization, an ensemble of modes with 
+band-limited characteristics is obtained[38]. Specifically, the core of 
+Variational Mode Decomposition (VMD) is to construct a variational 
+problem that exploits the principles of classical Wiener filtering, Hilbert 
+transforms, and down-mixing to decompose multi-component signals 
+into multiple Intrinsic Mode Functions (Imfs). Here, the Wiener filter is 
+used to denoise the signal, while the Hilbert transform acts as a spectral 
+domain multiplier, producing an analytical single-sideband signal[39]. 
+During the decomposition process, the sum of the bandwidths is mini￾mized by iteratively searching for limited bandwidth and the optimal 
+center frequency to ensure that the component signals are equal to the 
+original signal. This method determines the number of Imfs and allows 
+the output of the Imfs to be controlled based on practical considerations. 
+Each Imf can be represented as follows: 
+uK = AK(t)cos[φK(t)] (7) 
+where, AK(t) represents the instantaneous amplitude of uK, φK(t) denotes 
+the instantaneous phase, and t denotes time. 
+Fig. 1. Infrared interferometric thickness measurement principle. (a)Interference model; (b)Reflectance spectrum; (c) Thickness calculation; 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+4
+The constrained optimization problem for constructing each Imf 
+component in VMD can be formulated as[40]: 
+⎧
+⎪⎪⎪⎪⎨
+⎪⎪⎪⎪⎩
+min
+({uK}, {ωK} )
+{∑
+K
+⃦
+⃦
+⃦
+⃦
+∂t
+[(δ(t) + π
+j
+t
+)
+∗ uK(t)
+]
+e− jwK t
+⃦
+⃦
+⃦
+⃦
+2
+2
+}
+s.t.
+∑
+K
+uK(t) = f(t)
+(8) 
+where f(t) represents the original signal, [14]= {u1, u2, …, uk} represents 
+the K finite bandwidth Imfs obtained from the decomposition, {ωK} =
+{ω1, ω2, …, ωk} represents the center frequencies of the Imfs, δ(t) is the 
+Dirac function, * denotes the convolution operator, and j is the imagi￾nary unit. 
+Next, by utilizing the Lagrange multiplier algorithm with quadratic 
+penalty terms, the problem is transformed into an unconstrained vari￾ational problem, leveraging the convergence of quadratic penalty under 
+finite weights and strict enforcement of Lagrange multiplier constraints. 
+Therefore, the extended Lagrange expression L is given as[41]: 
+L({uK}, {ωK}, λ ) = α
+∑
+K
+⃦
+⃦
+⃦
+⃦
+∂t
+[(δ(t) + π
+j
+t
+)
+∗ uK(t)
+]
+e− jwK t
+⃦
+⃦
+⃦
+⃦
+2
+2
++
+⃦
+⃦
+⃦
+⃦
+⃦
+f(t)
+− ∑
+K
+uK(t)
+⃦
+⃦
+⃦
+⃦
+⃦
+2
+2
++
+〈
+λ(t), f(t) − ∑
+K
+uK(t)
+〉
+(9) 
+where, λ(t) represents the Lagrange multiplier operator and α is the 
+balance parameter for the data fidelity constraint, which was set to 3000 
+in this study. Finally, the Alternate Direction Method of Multipliers 
+(ADMM) is employed to identify the saddle point of the above function 
+and solve the original minimization problem. The solution process in￾volves iterative updates of uK, ωK, and λ until the optimal solution of the 
+above function is obtained. By following these steps, the VMD decom￾position is completed, resulting in K Imf components. 
+The VMD method has shown a strong ability to solve mode mixing 
+and misclassification problems due to non-iterative calculation and 
+adaptive narrowband determination procedures. While VMD has 
+demonstrated better performance than traditional decomposition 
+methods, its success significantly depends on preset parameters 
+including mode number K and bandwidth control parameter α. Hence, 
+selecting appropriate parameters to optimize the performance of VMD 
+has become a critical research issue. 
+Thickness calculation formula based on VLA 
+Using VMD decomposition technology in conjunction with Lomb￾Scargle periodograms has two significant advantages. (1) it can elimi￾nate interference caused by the light source. For LED and SLED light 
+sources widely used in the market, their power is not uniformly 
+distributed within the wavelength range. In most cases, the power at the 
+center wavelength of the light source is the highest, and the power on 
+both sides gradually decreases, exhibiting a Gaussian distribution. 
+Therefore, as shown in Fig. 2(a), the actual collected reflection spectrum 
+is modulated by the power curve of the light source, which will un￾doubtedly introduce errors into the final measurement results. After 
+conducting extensive experiments, we found that after VMD decompo￾sition of the reflected spectral signal, Imf1 reflects the power distribution 
+curve of the light source, as shown in Fig. 2(b). Therefore, we discard 
+Imf1 and only calculate Lomb-Scargle periodograms for Imf2 to eliminate 
+interference signals introduced by the light source. Secondly, it can 
+improve measurement efficiency. Based on the characteristics of VMD 
+algorithm, the mean of all Imf components is approximately 0 and their 
+variance is approximately 1. If we calculate the Lomb-Scargle periodo￾grams for Imf2, then R in equation (6) equals 0 and σ2 equals 1. This can 
+further speed up calculation speed based on fast LSP algorithm and thus 
+improve detection efficiency. 
+Fig. 2 demonstrates the complete process of the VLA algorithm. The 
+reflectance spectrum is decomposed using VMD, and the Imf2 compo￾nent is subsequently subjected to the peak extraction method to deter￾mine the maximum frequency f of the Lomb-Scargle periodogram. By 
+merging Equation (1), the thickness of the thin film can be ascertained as 
+follows: 
+d = fpeak
+2n (11) 
+where fpeak is the peak horizontal coordinate of the periodogram and n is 
+the refractive index of the epi-wafer sample. Due to the bilayer thickness 
+structure of the wafer, three distinct thickness peaks arise, as illustrated 
+in Fig. 2(c). 
+New algorithm for epi-wafer interference problem 
+By using the VLA method described in Section 2.2, we can accurately 
+isolate the original spectral signal components that solely represent epi￾wafer thickness information and accurately extract their maximum 
+frequency, thereby obtaining a more accurate thickness value using 
+Equation (11). However, due to the non-uniformity of the epi-wafer 
+material itself and variations in its microstructure, different epi-wafer 
+samples of different materials exhibit differences in their absorption 
+capacity in the infrared band. In addition, the reflectivity of the sub￾strate and epitaxial layer varies. As a result, the raw spectral interference 
+obtained for epi-wafers of certain specific materials (e.g. AL2O3) is often 
+of poor quality. Furthermore, when infrared interferometry is used to 
+measure epi-wafer thickness, the unique two-layer structure of the epi￾wafer often leads to secondary or multiple interferences, resulting in 
+the presence of more than three peaks in the periodogram. These 
+problems pose significant challenges to the final calculation and thick￾ness extraction. 
+Adaptive spectral excision algorithm 
+Fig. 3 illustrates a situation where the interfering signal is weak and 
+the spectral quality is poor. In Fig. 3(b), In the low frequency region of 
+the original spectrum, the interference quality is extremely poor, the 
+Fig. 2. VLA algorithm processing (K = 2). 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+5
+cosine trend is unclear and shows a distinct periodic trend, as shown by 
+the red box. In contrast, high quality spectra retain the cosine trend at 
+the boundary between periods, preserving the thickness information. 
+However, low-quality spectra affected by secondary interference expe￾rience destructive interference between the thickness information they 
+carry and the secondary interference signal at the inter-periodic 
+boundary, submerging the cosine signal in this region, as shown by 
+the principle model in Fig. 3(c). This phenomenon significantly in￾terferes with the original spectral signal, resulting in a smaller maximum 
+frequency extracted in the VLA algorithm and consequently an under￾estimated thickness measurement result. 
+To overcome this problem, we propose a novel adaptive spectral 
+excision algorithm. The core idea of this algorithm is to create a movable 
+window, as indicated by the purple box in Fig. 3(b). We use the spectral 
+quality within this window to determine the start and end points of the 
+excision. Specifically, we first create a moving window that divides the 
+original spectrum into several small intervals. Within each interval, we 
+calculate the mean peak value (Mp) and the mean valley value (Mv) to 
+assess the spectral quality. The window size is set to 5 % of the total 
+length of the original spectral signal. Within each small interval, Equa￾tion (12) is used to calculate the mean peak value (Pi) and mean valley 
+value (Vi) of the original spectral signal. 
+⎧
+⎪⎪⎪⎪⎨
+⎪⎪⎪⎪⎩
+Mp =
+∑min(|0.1×N×(changeScale+0.5)|,N− 1 )
+i=max(|0.1×N×changeScale|,0 ) |Pi|
+Cp
+Mv =
+∑min(|0.1×N×(changeScale+0.5)|,N− 1 )
+i=max(|0.1×N×changeScale|,0 ) |Vi|
+Cv
+(12) 
+Where N represents the number of sample points in the original 
+spectral signal, and changeScale ∈ (1, 9) denotes the change in the in￾terval shift scale so that the entire original spectral signal can be tra￾versed. Cp and Cv represent the number of peaks and troughs, 
+respectively, in each small interval of the original spectral signal. The 
+max and min functions ensure that the start point of the small interval is 
+greater than 0 while ensuring that the endpoint does not exceed the total 
+length of the spectral signal. 
+As can be seen from the high frequency region of the original spec￾trum in Fig. 3(a), when the spectral signal quality is high, the interfer￾ence phenomena are strong and the difference between the mean values 
+of the peaks and valleys of the corresponding cosine signal is significant. 
+Therefore, we set up a loop to continuously update the interval shift 
+scale (changeScale) and calculate the maximum mean difference (Md) 
+between peaks and valleys in each small interval, as well as the 
+maximum mean difference (MD) between peaks and valleys over all 
+intervals. The ratio between Md and MD is used as a criterion to evaluate 
+the spectral quality within the small intervals, as shown in Equation 
+(13). 
+max( ⃒
+⃒Mp − Mv
+⃒
+⃒, Md
+)
+MD
+⩾0.1 (13) 
+In Equation (13), if the ratio between Md and MD is greater than or 
+equal to 0.1, we consider the quality of the spectrum in this interval to be 
+good. Therefore, the changeScale at this point represents the optimal 
+starting position for spectral truncation. The final truncation scale value 
+(Scale) can thus be expressed as: 
+Scale = 0.1 × max(min(changeScale, 3.5), 0 ) (14) 
+Since the original spectral signal is similar to a cosine function, 
+where the frequency decreases as the wavelength increases, it is neces￾sary to truncate symmetrically around the central wavelength when 
+performing spectral trimming. Consequently, the adaptive spectral 
+excision algorithm truncates an interval length proportional to the total 
+length of the spectral signal at both the left and right ends. In Equation 
+(14), the max and min functions limit the interval shift scale (change￾Scale) to the range (0, 3.5) to avoid truncation positions before the 
+leftmost side of the spectral signal and to ensure that the left and right 
+truncation areas do not exceed 35 % of the spectral signal. The final 
+truncation result is shown in Fig. 3(d). 
+High-precision thickness extraction algorithm 
+To overcome the problem of secondary and multiple interferences 
+caused by the peculiar two-layer structure of epi-wafers, we propose a 
+high-precision thickness extraction algorithm that allows accurate 
+thickness extraction even when multiple peaks are present. As shown in 
+Fig. 3. Adaptive spectral excision algorithm. (a) Original spectrum; (b) Low-quality spectra; (c) interference principle (physics); (d) High-quality spectra. 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+6
+Fig. 4, this algorithm consists of three processes. The first process is the 
+pre-processing stage. After performing the time domain to frequency 
+domain conversion using the VLA algorithm, the higher peaks in the 
+periodogram represent the thickness information of the epi-wafer. 
+However, as shown in Fig. 4(a), there are also some weak lower peaks 
+in the periodogram, which often represent noise introduced by external 
+environmental factors during the measurement process. It is therefore 
+necessary to eliminate the frequency components that characterize this 
+noise information. Equation (15) can be used to describe this noise 
+reduction process. The effect of noise reduction is shown in Fig. 4(b). 
+Ti =
+⎧
+⎪⎪⎪⎪⎪⎨
+⎪⎪⎪⎪⎪⎩
+Ti, Ti⩾
+1
+Z
+∑Z− 1
+i=0 Ti
+0, Ti⩽
+1
+Z
+∑Z− 1
+i=0 Ti
+(15) 
+Where Ti represents the vertical coordinate values of the periodogram 
+corresponding to the power spectral density for each thickness value. Z 
+represents the total number of coordinates in the periodogram, indi￾cating the maximum measurement range. The noise reduction process 
+effectively eliminates weak peaks introduced by noise and maximizes 
+the preservation of peaks representing thickness information only. 
+Next, the situation needs to be discussed. In Case 1, it is assumed that 
+only three peaks remain in the periodogram after noise removal, as 
+illustrated in Fig. 4(d). The horizontal coordinates of these three peaks 
+from left to right indicate the thicknesses of the epitaxial layer, the 
+substrate, and their sum. In Case 2, it is assumed that after noise removal 
+the number of peaks in the periodogram exceeds three, as seen in Fig. 4 
+(b). This indicates the presence of multiple interference phenomena and 
+strong interference signals, which necessitates a peak selection opera￾tion. The peak selection operation is defined by the constraint relation in 
+Equation (16): 
+⎧
+⎨
+⎩
+⃒
+⃒
+⃒
+⃒
+Pi + Imax − Pj
+⃒
+⃒ < threshold
+Pi + Pj − Imax
+⃒
+⃒ < threshold
+⃒
+⃒Pj + Imax − Pi
+⃒
+⃒ < threshold
+, i, j ∈ (0, Z − 1) (16) 
+where Z represents the maximum measurement range and is equal to the 
+total number of data points in the periodogram. After removing the 
+noise, the remaining peak sequences are expressed as Pi and Pj. The 
+highest peak corresponds to Imax and the measurement precision 
+threshold is represented by the term threshold. Several combinations of 
+peaks (Possibility[i, j]) can be identified following the peak selection 
+operation, which may potentially represent the final thickness. By 
+applying the constraint relation in Equation (17), the final thickness can 
+be determined. 
+maxIdx = argmaxi
+(∑2
+j=0
+Ti[Possibility[i, j] ]
+)
+(17) 
+Where, Ti represents the vertical coordinate value of the power spectral 
+density of the i-th thickness index, denoting the amount of energy pre￾sent. By summing up the total energy in all possible peak combinations, 
+we can determine the combination with the highest energy value 
+(maxIdx), which represents the final thickness result for the epi-wafer 
+sample. 
+Overall procedure 
+Based on the proposed adaptive spectral excision algorithm, VLA 
+algorithm, and high-precision thickness extraction algorithm, the 
+semiconductor epi-wafer thickness detection process is shown in Fig. 5. 
+Experiments and results 
+We conducted three experiments and implemented a comprehensive 
+experimental design to confirm the practicability of the above￾mentioned algorithms. In the subsequent trials, an infrared spectrom￾eter with a central wavelength of 1050 nm, a bandwidth of 100 nm, and a 
+resolution of 0.3 nm, supplied by Shanghai OceanHood Optoelectronics 
+Co., Ltd., was utilized. We used an SLED (Superluminescent Light 
+Emitting Diode) infrared light source from Shenzhen Golight Company. 
+It had a central wavelength of 1050 nm, a power of 20mW (3 dB), and a 
+spectral width of 90 nm. In our study, we used eight sets of epi-wafers 
+with sapphire (AL2O3) substrates and GaN epitaxial layers provided 
+by Shanghai Fabxlab Semiconductor Co., Ltd. together. We enlisted the 
+Sinoma Institute of Materials Research to measure the thickness of these 
+8 sets of epi-wafer samples using a high-precision wide range 
+Fig. 4. High-precision thickness extraction algorithm. (a) Original periodogram; (b) Periodogram after noise reduction; (c) Calculate the sum of the energies; (d) 
+Extracted thickness results. 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+7
+ellipsometer. According to the measurement results, the substrate 
+thicknesses of the eight epi-wafer samples were as follows: 136.14 μm, 
+222.39 μm, 278.05 μm, 311.28 μm, 342.73 μm, 477.38 μm, 531.69 μm, 
+and 620.50 μm. The epitaxial layer thicknesses of wafer samples as 
+follows: 31.06 μm, 27.13 μm, 38.51 μm, 79.49 μm, 40.16 μm, 34.92 μm, 
+54.12 μm and 58.11 μm. As such, these measurements are used as ref￾erences for the actual thickness of these epi-wafer samples. 
+We conducted three experiments to verify the practicality of the 
+Fig. 5. Scheme flowchart. 
+Fig. 6. Results of adaptive spectral excision experiment for 8 samples (in each subplot, the horizontal coordinate is the thickness of the sample and the vertical 
+coordinate is the power spectral density calculated from the periodogram; the left panel shows the results of the periodogram without the adaptive excision algorithm 
+and the right panel shows the results of the periodogram with the adaptive excision algorithm). (a)~(h):sample 1 ~ sample 8. 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+8
+algorithm. In the experimental setup, we used a custom-built infrared 
+spectrometer from Shanghai OceanHood Optoelectronics Co., Ltd. The 
+spectrometer has a bandwidth of 120 nm, a center wavelength of 1020 
+nm, a resolution of 0.3 nm, an integration time of 100 μs-30 min, and a 
+signal-to-noise ratio of ≥2000:1. The light source used was a custom￾made SLED infrared light source from Shenzhen Golight Co., Ltd. The 
+center wavelength of the light source is 1020 nm, the band range is 960 
+nm-1080 nm, and the power is 20mW (3 dB). The optical probe is our 
+independently developed achromatic focusing lens with a numerical 
+aperture of 0.1, a focal length of 40 mm and a measurement angle of ±
+5◦. The operating temperature of the entire measurement system is 
+0℃–+45℃. 
+Adaptive spectral excision experiment 
+Silicon typically absorbs shorter wavelengths of infrared light but 
+has lower absorption rates for longer wavelengths. Therefore, the actual 
+collected reflection spectrum often exhibits weakened interference sig￾nals and poor interference quality in the short-wavelength region. In this 
+experiment, we performed original spectral acquisition on eight epi￾wafer samples and compared the results of the Lomb-Scargle periodo￾grams with and without the adaptive removal algorithm, as shown in 
+Fig. 6. Each small graph in the figure represents one epi-wafer sample, 
+where the left graph shows the periodogram obtained directly from the 
+original spectra, while the right graph shows the periodogram after 
+applying the adaptive removal algorithm. The true values of substrate 
+thickness, epitaxial layer thickness, and their sum have been plotted at 
+the corresponding peaks in the right plot. 
+Upon examining Fig. 6, it becomes apparent that the Lomb-Scargle 
+periodogram with the adaptive spectral excision algorithm produces 
+clearer and more concentrated frequency peaks for each sample, with 
+less interference between adjacent peaks. In contrast, the periodogram 
+without the adaptive spectral excision algorithm displays greater noise 
+and mixed signals. This demonstrates that the adaptive excision algo￾rithm can effectively deal with weak interference signals and poor 
+interference quality resulting in problems from certain epi-wafers that 
+strongly absorb infrared light. The algorithm can selectively remove 
+regions with poor interference quality and preserve those with high 
+interference quality, thereby ensuring the completeness and accuracy of 
+crucial information in the spectrum. 
+VLA experiment 
+Substrate thickness measurement 
+We collected 50 reflection spectra for each sample’s substrate and 
+epitaxial layer at different times of the same day. We then calculated the 
+thickness using different time-domain frequency-domain methods. We 
+used three time-domain frequency-domain transformation methods: 
+Fourier transform, Lomb-Scargle periodogram, and the VLA technique 
+proposed in this paper. It is worth emphasizing that these three methods 
+are all based on FTIR technology and are all based on Equation (11) to 
+calculate the sample thickness, with their difference being the use of 
+different methods to obtain fpeak in Equation (11). In Fig. 7, we plotted 
+the thickness measurement results of the substrate using a box plot. It is 
+not difficult to see that the VLA algorithm significantly improves both 
+measurement accuracy and stability. We calculated the mean error and 
+variance of the results obtained by three different analysis methods and 
+plotted them in the form of a histogram, as shown in Fig. 8. 
+Analyzing Measurement Precision: (1) Comparing the results of FFT 
+with those of the LSP method, the measurement precision using the FFT 
+approach is 98.86 %, while using the LSP algorithm alone, the mea￾surement precision is 99.67 %, indicating a significant enhancement in 
+measurement accuracy. Hence, it can be demonstrated that employing 
+the Lomb-Scargle periodogram during the time-domain to frequency￾domain transformation of the original spectrum is a more promising 
+technique. (2) Comparing the results of the LSP algorithm alone with 
+those of the VLA, the measurement precision when using the LSP algo￾rithm alone is 99.67 %, whereas it reaches 99.94 % with the VLA al￾gorithm. This demonstrates that combining the VMD algorithm with the 
+LSP algorithm can mitigate the impact of uneven light source power 
+distribution, further improving measurement precision. Analyzing 
+measurement stability, the results show that using the LSP algorithm 
+Fig. 7. Box plots of experimental results of thickness measurements of the substrate (in each subplot, the left box corresponds to the results obtained through the FFT 
+method, the middle box to those obtained using the Lomb-Scargle periodogram method, and the right box to the results analyzed with the VLA algorithm proposed in 
+this paper). (a)~(h):sample 1 ~ sample 8. 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+9
+alone results in an approximately 55 % increase in measurement sta￾bility when compared to using the FFT. Similarly, the VLA algorithm 
+leads to a roughly 35 % increase in measurement stability when 
+compared to using the LSP algorithm alone. 
+Epitaxial layer thickness measurement 
+We conducted thickness measurements on the epitaxial layer using 
+identical criteria to the substrate experiment. The experimental findings 
+corresponded significantly, as illustrated in Figs. 9 and 10. 
+Thickness extraction experiment 
+In this experiment, instead of focusing only on the substrate or 
+epitaxial layer of the epi-wafer samples, we perform thickness mea￾surements on the entire epi-wafer sample to obtain the substrate thick￾ness and epitaxial layer thickness simultaneously. To validate the 
+accuracy of the high-precision thickness extraction algorithm, we 
+compare the results of the traditional thickness extraction method with 
+the results of the proposed high-precision thickness extraction 
+algorithm. 
+Fig. 11 shows the residual peak plots of the periodograms of the eight 
+epi-wafer samples after noise removal, together with the corresponding 
+coordinates of each peak point. The x-axis depicts the thickness indices 
+in the given range, while the y-axis depicts the energy or power spectral 
+density for each thickness index. The traditional thickness extraction 
+method usually extracts peaks based on their height and left-to-right 
+order. Simply put, the traditional method identifies the three highest 
+peaks as follows: the peak with the smallest horizontal coordinate is 
+considered the epitaxial layer thickness, followed by the substrate 
+thickness, and the peak with the largest horizontal coordinate is the sum 
+of the two. Table 1 displays the thickness extraction results of both the 
+traditional method and the proposed method. An observation reveals, 
+for the eight epi-wafer samples tested in this investigation, that the 
+traditional thickness extraction method lacks the required accuracy for 
+industrial production. Significant deviations are evident in the thickness 
+results of samples 1, 2, 4, 5, and 6. 
+Subsequently, we employed a dot plot to illustrate the measurements 
+of the two thickness extraction methods alongside the reference thick￾ness of the sample, as depicted in Fig. 12. In the figure, the solid gray line 
+represents the results obtained using the conventional thickness 
+Fig. 8. Data analysis of substrate thickness measurement experiments. (a) mean value error; (b) variance (statistics). 
+Fig. 9. Box plots of experimental results of thickness measurements of the epitaxial layer (in each subplot, the left box corresponds to the results obtained through 
+the FFT method, the middle box to those obtained using the Lomb-Scargle periodogram method, and the right box to the results analyzed with the VLA algorithm 
+proposed in this paper). (a)~(h):sample 1 ~ sample 8. 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+10
+Fig. 10. Data analysis of epitaxial layer thickness measurement experiments. (a) mean value error; (b) variance (statistics). 
+Fig. 11. Remaining peaks after applying the denoising algorithm in section 2.3.2 to the Lomb-Scargle periodogram (each peak represents a thickness value and the 
+horizontal and vertical coordinates of the peak point have been labelled, where the horizontal coordinate is the thickness value corresponding to that point and the 
+vertical coordinate is the power spectral density corresponding to that thickness). (a)~(h): sample1 ~ sample8. 
+Table 1 
+Comparison of the results of different thickness extraction algorithms (the traditional method uses the thickness extraction method based on peak height and order as 
+described above; the new method uses the high-precision thickness extraction algorithm proposed in this paper). 
+Sample number Epitaxial thickness(μm) Substrate thickness(μm) 
+Traditional method New method Reference thickness Traditional method New method Reference thickness 
+1 31.06 30.91 31.06 64.11 135.89 136.14 
+2 11.17 26.87 27.13 26.87 222.07 222.39 
+3 38.28 38.28 38.51 277.86 277.86 278.05 
+4 79.35 79.35 79.49 152.51 310.92 311.28 
+5 37.80 40.01 40.16 40.01 342.59 342.73 
+6 34.68 34.68 34.92 51.71 477.51 477.38 
+7 53.81 53.81 54.12 531.57 531.57 531.69 
+8 57.94 57.94 58.11 620.73 620.73 620.50 
+Fig. 12. Thickness extraction results using different methods. (a) substrate; (b) epitaxial. 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+11
+extraction method, while the solid blue line represents the outcomes 
+derived from the precision thickness extraction method introduced in 
+this study. The red dashed line represents the reference thickness of the 
+sample. It becomes evident that, whether for the substrate or the 
+epitaxial layer, the results obtained using the precision thickness 
+extraction algorithm presented in this study closely approximate the 
+reference thickness. Furthermore, it is discernible that, in comparison to 
+the substrate, the results for the epitaxial layer are more precise. This 
+discrepancy arises due to the relatively greater thickness of the sub￾strate, which is positioned beneath the epitaxial layer, resulting in a 
+weaker intensity of light beams reflected from the upper and lower 
+surfaces of the substrate. Consequently, portions of the reflection spec￾trum that convey information about the substrate thickness are more 
+susceptible to interference from multiple reflected signals, making the 
+accurate extraction of peak points challenging after the time-domain to 
+frequency-domain transformation. However, the employment of the 
+precision thickness extraction algorithm introduced in this study effec￾tively mitigates this issue. 
+Discussion 
+This study proposes a potentially effective method for achieving 
+high-precision measurements of substrate and epitaxial layer thickness 
+in semiconductor epi-wafers. Nevertheless, there are still some unre￾solved issues that require discussion. 
+During the computation of the Lomb-Scargle periodogram, a stride, 
+also known as the frequency range and designated as f in Equation (6), 
+must be set manually. The Lomb-Scargle periodogram operates by 
+nonlinearly fitting the raw data over a specified interval provided by the 
+user. Thus, the determination of f, the frequency range, establishes the 
+measurement accuracy of the outcome. Practical measurement needs to 
+guide the selection of f to guarantee both efficient and precise outcomes. 
+It is necessary to discuss the capabilities of this device. Firstly, the 
+device uses near-infrared light as its light source. Therefore, the device is 
+only suitable for testing thin film materials that can be penetrated by 
+near-infrared light, such as most semiconductor materials and insulating 
+materials. For most metal materials, we believe that a UV light source 
+with stronger penetration power is needed. Secondly, the device 
+currently only applies to double-layer thin films, that is, measuring the 
+thickness of both the substrate and the single-layer epitaxial layer 
+simultaneously. We will continue to improve and optimize the algorithm 
+to make it suitable for measuring the thickness of multi-layer thin films 
+in the future. Finally, it is also necessary to discuss the range of this 
+device. (1) Upper Thickness Limit: The maximum thickness that can be 
+measured is determined by hardware parameters, such as the spec￾trometer and light source used. The light source used covers a wave￾length range of 960 nm to 1080 nm, with a spectral width of 120 nm. The 
+resolution of the spectrometer is 0.3 nm. Therefore, under optimal 
+conditions, the reflection spectrum collected comprises 400 sampling 
+points. Following the Nyquist sampling theorem, a minimum of two 
+sampling points is required to accurately reconstruct one cycle. Conse￾quently, with 400 sampling points, up to 200 cycles may be restored. For 
+the wavelength range of 960 nm to 1080 nm, computer-simulated 
+reflection spectra imply that an 800 μm thickness (n = 2) corresponds 
+to a reflection spectrum with 200 cycles. Therefore, the upper thickness 
+limit for measuring thin film materials with a refractive index of 2 is 800 
+μm. (2) It is important to note the lower thickness limit. The FTIR 
+method computes thickness based on frequency, and thus, the reflection 
+spectrum should cover at least one cycle for frequency calculation to be 
+possible. Simulated reflection spectra between the wavelengths of 960 
+nm and 1080 nm indicate that a reflection spectrum with a single cycle 
+corresponds to a thickness of approximately 3 μm. Therefore, the lower 
+thickness limit for thin film materials with a refractive index of 2 is 3 μm. 
+To summarize, the measurement range of this system for thin film ma￾terials with a refractive index of 2 spans from 3 μm to 800 μm. By 
+following the relationship in Equation (11), it is apparent that for a 
+refractive index of 1, the range extends from 6 μm to 1600 μm and 
+beyond. 
+The VMD decomposition technique is an advanced method for 
+decomposing signals, and its decomposition performance is highly 
+influenced by the parameter settings. We found through extensive 
+experimentation that a larger value of the parameter α results in 
+smoother low-frequency Imf1 signals, as shown in Equation (9). In our 
+method, Imf1 represents the baseline signal of a light source when K is set 
+to 2. If the value of the parameter α is small, the Imf1 signal exhibits 
+slight cosine trends and retains some frequency information. In some 
+cases, the intensity of the noise signal surpasses that of the thickness 
+signal, making it difficult to determine whether the frequency compo￾nents carried by the Imf1 signal when α is reduced represent noise or 
+thickness information. Thus, determining the parameter α has an impact 
+on the accuracy of the final measurement results. In this study, we set 
+the parameter to 3000 based on experimental experience, but the ac￾curate determination of parameter α through spectral quality or infrared 
+source parameters is possible. This is also the main focus of our future 
+research. 
+Furthermore, the VMD decomposition technique introduces errors in 
+the reconstructed Imf components’ center frequency and bandwidth 
+compared to the original spectrum signal. Although these errors have no 
+impact on the current measurement accuracy, we believe a previously 
+suggested EMD decomposition method can prevent such a situation. The 
+principles of the completely data-driven EMD decomposition technique, 
+which does not require any signal reconstruction process, have been 
+extensively studied. However, the EMD decomposition method was not 
+chosen because it cannot control the number of decomposed modes, i.e. 
+the K-value in the VMD algorithm. As a result, the EMD method may 
+decompose the substrate and epitaxial layer thickness into different 
+modes or place them within the same mode when decomposing the 
+original spectrum. This depends solely on the intensity of the noise 
+interference signal. However, it is believed that for the measurement of 
+single-layer thin films, the EMD decomposition method provides better 
+results. This is because only the calculation of the Lomb-Scargle perio￾dogram for the Imf1 component is required. Single-layer thin films do not 
+exhibit secondary interference phenomena, and the quality of interfer￾ence between reflected and transmitted light is good, with thickness 
+information necessarily present in the high-frequency component Imf1. 
+However, for the double-layer epi-wafer samples used in this study, the 
+VMD method is more appropriate. 
+This study conducted two denoising processes, which will be 
+explained for clarity. The initial denoising process involves setting the 
+VMD decomposition modal number, K, to 2 during the VLA algorithm. 
+Setting K to 2 corresponds to Imf1 representing the slowly changing part 
+of the signal characterized by low-frequency vibrations and long-term 
+trends. Imf1 was discarded, and only the Lomb-Scargle periodogram 
+calculation for Imf2 was performed to eliminate a fraction of the weak 
+noise signal. However, this alone is insufficient for achieving the final 
+thickness extraction. Thus, a second noise removal process is included in 
+the high-precision thickness extraction algorithm. This process is per￾formed through Equation (15). The second noise removal process is 
+capable of removing most of the noise in the original spectra, thereby 
+reducing computational time for the subsequent thickness extraction 
+process and improving efficiency and accuracy. The interplay of these 
+two noise removal processes resulted in more accurate and stable 
+thickness extraction. 
+Conclusion 
+In this paper, we present a highly accurate method for measuring the 
+thickness of a semiconductor epi-wafer using Fourier infrared interfer￾ometry. The proposed method uses the VLA algorithm, which carries out 
+VMD decomposition and Lomb-Scargle periodogram calculation on the 
+original spectrum. Through this, we can obtain frequency components 
+that represent the thicknesses of both the epi-wafer substrate and 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+12
+epitaxial layer, and accurately calculate their thicknesses simulta￾neously. Furthermore, we introduce an adaptive spectral excision al￾gorithm and a high-precision thickness extraction algorithm in this 
+paper. The adaptive spectral excision algorithm addresses the problem 
+of weak interference signals, which is caused by the different reflectiv￾ities of the epi-wafer substrate and epitaxial layer, as well as the 
+different infrared absorption capabilities of the materials in the spectral 
+region. Weakly interfering spectral portions are removed adaptively to 
+enhance the quality of the original spectrum. The high-precision thick￾ness extraction algorithm employs thickness constraints to accurately 
+extract peak thickness information while filtering out multiple inter￾ference peaks arising due to the unique bilayer structure of the epi-wafer 
+sample. Experiments show that accurate thickness measurement has 
+been attained for epi-wafer samples of varying thicknesses and mate￾rials. This method simplifies the measurement process, decreases pro￾duction expenses, and demonstrates high stability and reliability. Thus, 
+this approach is highly suitable to fulfill the demand for rapid and 
+efficient epi-wafer thickness measurement in industrial manufacturing. 
+Author contribution statement 
+Jiaxing Sun, Zhisong Li, Haojie Zhang: Conceived and designed the 
+experiments; Performed the experiments; Analyzed and interpreted the 
+data; Contributed reagents, materials, analysis tools or data; Wrote the 
+paper. Tianbao Zhai, Jinlong Song: Performed the experiments; 
+Analyzed and interpreted the data; Contributed reagents, materials, 
+analysis tools or data; Wrote the paper. 
+Funding statement 
+This work was supported in part by the Natural Science Foundation 
+of Shanghai under Grant 21ZR1424600, in part by the National Natural 
+Science Foundation of China under Grant 51975116, and in part by the 
+Natural Science Foundation of Shanghai under Grant 21ZR1402900. 
+The authors would also like to thank the editors and reviewers for their 
+valuable suggestions and kind work. 
+CRediT authorship contribution statement 
+Jiaxing Sun: Methodology, Writing – original draft, Writing – re￾view & editing. Zhisong Li: . Haojie Zhang: Data curation. Jinlong 
+Song: Resources. Tianbao Zhai: Validation, Visualization. 
+Declaration of Competing Interest 
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper. 
+Data availability 
+Data will be made available on request. 
+References 
+[1] Lee N-Y, et al. Characterization of Si Epitaxial Layer grown on highly-doped Si substrate 
+by using THz reflection spectroscopy, in: 2022 47th International Conference on 
+Infrared, Millimeter and Terahertz Waves (IRMMW-THz). 2022. IEEE. 
+[2] Kukushkin S, Osipov A. Epitaxial silicon carbide on silicon. method of coordinated 
+substitution of atoms (a review). Russ J Gen Chem 2022;92(4):584–610. 
+[3] Burk Jr AA, et al. Industrial Perspective of SiC Epitaxy. Wide Bandgap 
+Semiconductors for Power Electronics: Materials, Devices, Applications 2021;1: 
+75–92. 
+[4] Lee K, et al. Giant tunneling electroresistance in epitaxial ferroelectric ultrathin 
+films directly integrated on Si. Appl Mater Today 2022;26:101308. 
+[5] Chaluvadi SK, et al. Integration of epitaxial La2/3Sr1/3MnO3 thin films on silicon￾on-sapphire substrate for MEMS applications. Appl Surf Sci 2022;579:152095. 
+[6] Maniscalco B, Kaminski P, Walls J. Thin film thickness measurements using 
+scanning white light interferometry. Thin Solid Films 2014;550:10–6. 
+[7] Lee J, Jin J. Thickness and refractive index measurements of a thin-film using an 
+artificial neural network algorithm. Metrologia 2023;60(2):025001. 
+[8] Cho D-H, et al. High-speed wafer film measurement with heterogeneous optical 
+sensor system. Metrology, Inspection, and Process Control for Semiconductor 
+Manufacturing XXXV. SPIE; 2021. 
+[9] Park J, et al. Thickness measurements and uncertainty evaluation of a multilayer 
+thin-film sample using auxiliary single-layer samples. Metrologia 2023;60(2): 
+025007. 
+[10] Meyer D. Epi wafers: preparation and properties. In: Handbook of Silicon Based 
+MEMS Materials and Technologies. Elsevier; 2020. p. 111–31. 
+[11] Vahlman, H., et al. Monitoring of porous silicon layers for epitaxial wafer production 
+using inline reflectance spectroscopy. in AIP Conference Proceedings. 2023. AIP 
+Publishing. 
+[12] Lee S-M, Kim Y-W. Morphological characterization of 325 mesh-grinding-induced 
+defects on silicon wafer surface. Microelectron Reliab 2022;139:114846. 
+[13] Hilfiker JN, Hong N, Schoeche S. Mueller matrix spectroscopic ellipsometry. 
+Advanced Optical Technologies 2022;11(3–4):59–91. 
+[14] Kim D, et al. High speed thin film thickness mapping by using dynamic 
+spectroscopic imaging ellipsometry. Optical Technology and Measurement for 
+Industrial Applications Conference 2022. SPIE; 2022. 
+[15] Chen C, et al. Imaging Mueller matrix ellipsometry with sub-micron resolution 
+based on back focal plane scanning. Opt Express 2021;29(20):32712–27. 
+[16] Loo R, et al. Analysis of Selectively Grown Epitaxial Si1− x Ge x by Spectroscopic 
+Ellipsometry and Comparison with Other Established Techniques. J Electrochem 
+Soc 2000;147(2):751. 
+[17] Levi D, et al. Real-time spectroscopic ellipsometry studies of the growth of 
+amorphous and epitaxial silicon for photovoltaic applications. J Vac Sci Technol A 
+2006;24(4):1676–83. 
+[18] Pickering C. Spectroscopic ellipsometry for monitoring and control of surfaces, thin 
+layers and interfaces. Surface and Interface Analysis: an International Journal 
+Devoted to the Development and Application of Techniques for the Analysis of 
+Surfaces. Interfaces and Thin Films 2001;31(10):927–37. 
+[19] Tu X, et al. Design, fabrication and testing of achromatic elliptical polarizer. Opt 
+Express 2017;25(9):10355–67. 
+[20] Grunewald T, et al. Measurement of layer thicknesses with an improved 
+optimization method for depolarizing Mueller matrices. Meas Sci Technol 2020;31 
+(11):115010. 
+[21] Zhou Z-H, Reif R. Epi-film thickness measurements using emission Fourier 
+transform infrared spectroscopy. II. Real-time in situ process monitoring and 
+control. IEEE Trans Semicond Manuf 1995;8(3):340–5. 
+[22] Kildemo M, Dalsrud V, Fostad O. Measurement of physical thicknesses in 
+micromachined structures consisting of glass and c-Si, by Fourier transform 
+infrared. Opt Eng 1999;38(9):1542–52. 
+[23] Jeong MG, et al. Subsurface Imaging of Microfabricated Silicon Membrane-Cavity 
+Structures Using Near-Infrared Interferometry. Adv Eng Mater 2022;24(10): 
+2200531. 
+[24] Shcherbin K, et al. Near-infrared sensitive two-wave mixing adaptive 
+interferometer based on a liquid crystal light valve with a semiconductor substrate. 
+Appl Opt 2022;61(22):6498–503. 
+[25] Park J, et al. A review of thickness measurements of thick transparent layers using 
+optical interferometry. Int J Precis Eng Manuf 2019;20:463–77. 
+[26] Teh WH, et al. Backside infrared interferometric patterned wafer thickness sensing 
+for through-silicon-via (TSV) etch metrology. IEEE Trans Semicond Manuf 2010;23 
+(3):419–22. 
+[27] Boulet C, Hathaway M, Jackson DA. Fiber-optic-based absolute displacement 
+sensors at 1500 nm by means of a variant of channeled spectrum signal recovery. 
+Opt Lett 2004;29(14):1602–4. 
+[28] Sun J, et al. A method for measuring and calibrating the thickness of thin films 
+based on infrared interference technology. Results Phys 2023;51:106727. 
+[29] Press, W.H. and G.B. Rybicki, Fast algorithm for spectral analysis of unevenly sampled 
+data. Astrophysical Journal, Part 1 (ISSN 0004-637X), vol. 338, March 1, 1989, p. 
+277-280., 1989. 338: p. 277-280. 
+[30] Liu T, Fernando G. A frequency division multiplexed low-finesse fiber optic Fabry￾Perot sensor system for strain and displacement measurements. Rev Sci Instrum 
+2000;71(3):1275–8. 
+[31] Jiang Y. Fourier transform white-light interferometry for the measurement of fiber￾optic extrinsic Fabry-Perot interferometric sensors. IEEE Photon Technol Lett 2007; 
+20(2):75–7. 
+[32] VanderPlas JT. Understanding the lomb–scargle periodogram. Astrophys J Suppl 
+Ser 2018;236(1):16. 
+[33] Lu Y, et al. Meta-analysis of Photometric and Asteroseismic Measurements of 
+Stellar Rotation Periods: The Lomb-Scargle Periodogram, Autocorrelation 
+Function, and Wavelet and Rotational Splitting Analysis for 92 Kepler 
+Asteroseismic Targets. Astrophys J 2022;941(2):175. 
+[34] Dickman, A., 14.2 Modified Lomb–Scargle Algorithm. Verified Signal Processing 
+Algorithms in MATLAB and C: Advised by Israel Greiss, 2022: p. 161. 
+[35] Carpintero, D. Analysis Techniques: the Lomb-Scargle Periodogram. in Workshop Series 
+of the Asociacion Argentina de Astronomia. 2021. 
+[36] Leroy B. Fast calculation of the Lomb-Scargle periodogram using nonequispaced 
+fast Fourier transforms. A & A 2012;545:A50. 
+[37] Dragomiretskiy K, Zosso D. Variational mode decomposition. IEEE Trans Signal 
+Process 2013;62(3):531–44. 
+[38] Ur Rehman N, Aftab H. Multivariate variational mode decomposition. IEEE Trans 
+Signal Process 2019;67(23):6039–52. 
+J. Sun et al. 
+Results in Physics 54 (2023) 107146
+13
+[39] Lian J, et al. Adaptive variational mode decomposition method for signal 
+processing based on mode characteristic. Mech Syst Sig Process 2018;107:53–77. 
+[40] Wang Y, Markert R. Filter bank property of variational mode decomposition and its 
+applications. Signal Process 2016;120:509–21. 
+[41] Nazari M, Sakhaei SM. Successive variational mode decomposition. Signal Process 
+2020;174:107610. 
+J. Sun et al. 

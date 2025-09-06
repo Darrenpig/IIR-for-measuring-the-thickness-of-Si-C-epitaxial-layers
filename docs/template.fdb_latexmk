@@ -1,0 +1,15 @@
+# Fdb version 4
+["pdflatex"] 1757081657.86916 "d:/Project_env/CUMCU/B/docs/template.tex" "template.pdf" "template" 1757081658.46842 2
+  "cumcmthesis.cls" 0 -1 0 ""
+  "d:/Project_env/CUMCU/B/docs/template.tex" 1757081655 34251 a7b2758ac5333c0ea062737388444529 ""
+  "d:/Work_dev/texlive/2025/texmf-dist/tex/xelatex/xecjk/xeCJK.sty" 1746973270 183137 ed372550124703b2b73cbcc0b47cb20f ""
+  "d:/Work_dev/texlive/2025/texmf-dist/web2c/texmf.cnf" 1746957436 42148 61becc7c670cd061bb319c643c27fdd4 ""
+  "d:/Work_dev/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1746973422 3346198 a6582be940ee7a9aa558c664c84306f4 ""
+  "d:/Work_dev/texlive/2025/texmf.cnf" 1746973330 713 e69b156964470283e0530f5060668171 ""
+  "template.aux" 1757081657 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "template.tex" 1757081655 34251 a7b2758ac5333c0ea062737388444529 ""
+  (generated)
+  "template.aux"
+  "template.log"
+  "template.pdf"
+  (rewritten before read)
