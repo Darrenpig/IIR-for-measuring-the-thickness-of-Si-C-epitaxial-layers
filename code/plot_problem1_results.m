@@ -12,22 +12,14 @@ function plot_problem1_results(varargin)
 %   plot_problem1_results()                    % 使用默认参数
 %   plot_problem1_results('save', true)       % 保存图形
 %   plot_problem1_results('show_all', true)   % 显示所有子图
-%
-% 作者: CUMCU数学建模团队
-% 日期: 2024
 
-    % 解析输入参数 - Nature期刊格式优化
+    % 解析输入参数
     p = inputParser;
     addParameter(p, 'save', false, @islogical);
     addParameter(p, 'show_all', true, @islogical);
-    addParameter(p, 'show_fresnel', true, @islogical);
-    addParameter(p, 'show_phase', true, @islogical);
-    addParameter(p, 'show_spectrum', true, @islogical);
-    addParameter(p, 'show_thickness', true, @islogical);
     addParameter(p, 'save_path', 'results/figures/', @ischar);
-    addParameter(p, 'figure_format', 'eps', @ischar);  % Nature推荐EPS格式
-    addParameter(p, 'dpi', 600, @isnumeric);  % Nature要求高分辨率
-    addParameter(p, 'nature_style', true, @islogical);  % Nature期刊样式
+    addParameter(p, 'figure_format', 'png', @ischar);
+    addParameter(p, 'dpi', 300, @isnumeric);
     parse(p, varargin{:});
     
     options = p.Results;
@@ -62,30 +54,16 @@ function plot_problem1_results(varargin)
         mkdir(options.save_path);
     end
     
-    % Nature期刊样式设置
-    if options.nature_style
-        set(0, 'DefaultFigureColor', 'white');
-        set(0, 'DefaultAxesFontName', 'Arial');
-        set(0, 'DefaultAxesFontSize', 10);
-        set(0, 'DefaultTextFontName', 'Arial');
-        set(0, 'DefaultLineLineWidth', 1.5);
-    end
-    
-    % 根据参数选择性绘制图形
-    if options.show_all || options.show_fresnel
+    if options.show_all
+        % 绘制所有图形
         plot_fresnel_coefficients(const, params, options);
-    end
-    
-    if options.show_all || options.show_phase
         plot_phase_difference_analysis(const, params, options);
-    end
-    
-    if options.show_all || options.show_spectrum
         plot_reflectance_spectrum(const, params, options);
-    end
-    
-    if options.show_all || options.show_thickness
         plot_thickness_interference_relation(const, params, options);
+        plot_comprehensive_analysis(results, const, params, options);
+    else
+        % 只绘制综合分析图
+        plot_comprehensive_analysis(results, const, params, options);
     end
     
     fprintf('第一问结果绘图完成！\n');
@@ -126,64 +104,49 @@ function plot_fresnel_coefficients(const, params, options)
         end
     end
     
-    % 创建Nature期刊风格图形
-    fig1 = figure('Position', [100, 100, 1400, 900]);
-    set(fig1, 'Color', 'white', 'PaperPositionMode', 'auto');
+    % 创建图形
+    fig1 = figure('Position', [100, 100, 1200, 800]);
+    set(fig1, 'Color', 'white');
     
-    % Nature期刊颜色方案
-    colors = {
-        [0, 0.4470, 0.7410],     % 蓝色
-        [0.8500, 0.3250, 0.0980], % 橙色
-        [0.9290, 0.6940, 0.1250], % 黄色
-        [0.4940, 0.1840, 0.5560], % 紫色
-        [0.4660, 0.6740, 0.1880], % 绿色
-        [0.3010, 0.7450, 0.9330]  % 青色
-    };
-    
-    % 子图1: 反射系数幅值 (Nature期刊风格)
+    % 子图1: 反射系数幅值
     subplot(2, 3, 1);
-    h1 = plot(theta_range * const.rad2deg, abs(r_s_air_sic), '-', 'Color', colors{1}, 'LineWidth', 2, 'DisplayName', 'r_s (Air-SiC)');
+    plot(theta_range * const.rad2deg, abs(r_s_air_sic), 'b-', 'LineWidth', 2, 'DisplayName', 'r_s (空气-SiC)');
     hold on;
-    h2 = plot(theta_range * const.rad2deg, abs(r_p_air_sic), '--', 'Color', colors{2}, 'LineWidth', 2, 'DisplayName', 'r_p (Air-SiC)');
-    h3 = plot(theta_range * const.rad2deg, abs(r_s_sic_si), ':', 'Color', colors{3}, 'LineWidth', 2, 'DisplayName', 'r_s (SiC-Si)');
-    xlabel('Incident angle (°)', 'FontName', 'Arial', 'FontSize', 11);
-    ylabel('Reflection coefficient', 'FontName', 'Arial', 'FontSize', 11);
-    title('a', 'FontName', 'Arial', 'FontSize', 12, 'FontWeight', 'bold', 'Position', [-8, 1.05]);
-    legend([h1, h2, h3], 'Location', 'northeast', 'FontSize', 9, 'Box', 'off');
-    grid on; grid minor;
-    set(gca, 'GridAlpha', 0.3, 'MinorGridAlpha', 0.1);
-    xlim([0, 90]); ylim([0, 1]);
-    box on;
-    
-    % 子图2: 透射系数幅值 (Nature期刊风格)
-    subplot(2, 3, 2);
-    h4 = plot(theta_range * const.rad2deg, abs(t_s_air_sic), '-', 'Color', colors{1}, 'LineWidth', 2, 'DisplayName', 't_s');
-    hold on;
-    h5 = plot(theta_range * const.rad2deg, abs(t_p_air_sic), '--', 'Color', colors{2}, 'LineWidth', 2, 'DisplayName', 't_p');
-    xlabel('Incident angle (°)', 'FontName', 'Arial', 'FontSize', 11);
-    ylabel('Transmission coefficient', 'FontName', 'Arial', 'FontSize', 11);
-    title('b', 'FontName', 'Arial', 'FontSize', 12, 'FontWeight', 'bold', 'Position', [-8, max(abs(t_s_air_sic))*1.05]);
-    legend([h4, h5], 'Location', 'northeast', 'FontSize', 9, 'Box', 'off');
-    grid on; grid minor;
-    set(gca, 'GridAlpha', 0.3, 'MinorGridAlpha', 0.1);
+    plot(theta_range * const.rad2deg, abs(r_p_air_sic), 'r--', 'LineWidth', 2, 'DisplayName', 'r_p (空气-SiC)');
+    plot(theta_range * const.rad2deg, abs(r_s_sic_si), 'g:', 'LineWidth', 2, 'DisplayName', 'r_s (SiC-Si)');
+    xlabel('入射角 (度)', 'FontSize', 12);
+    ylabel('反射系数幅值', 'FontSize', 12);
+    title('菲涅尔反射系数', 'FontSize', 14, 'FontWeight', 'bold');
+    legend('Location', 'best');
+    grid on;
     xlim([0, 90]);
-    box on;
+    ylim([0, 1]);
     
-    % 子图3: 反射率 (Nature期刊风格)
+    % 子图2: 透射系数幅值
+    subplot(2, 3, 2);
+    plot(theta_range * const.rad2deg, abs(t_s_air_sic), 'b-', 'LineWidth', 2, 'DisplayName', 't_s');
+    hold on;
+    plot(theta_range * const.rad2deg, abs(t_p_air_sic), 'r--', 'LineWidth', 2, 'DisplayName', 't_p');
+    xlabel('入射角 (度)', 'FontSize', 12);
+    ylabel('透射系数幅值', 'FontSize', 12);
+    title('菲涅尔透射系数', 'FontSize', 14, 'FontWeight', 'bold');
+    legend('Location', 'best');
+    grid on;
+    xlim([0, 90]);
+    
+    % 子图3: 反射率
     subplot(2, 3, 3);
     R_s = abs(r_s_air_sic).^2;
     R_p = abs(r_p_air_sic).^2;
-    h6 = plot(theta_range * const.rad2deg, R_s * 100, '-', 'Color', colors{1}, 'LineWidth', 2, 'DisplayName', 'R_s');
+    plot(theta_range * const.rad2deg, R_s * 100, 'b-', 'LineWidth', 2, 'DisplayName', 'R_s');
     hold on;
-    h7 = plot(theta_range * const.rad2deg, R_p * 100, '--', 'Color', colors{2}, 'LineWidth', 2, 'DisplayName', 'R_p');
-    xlabel('Incident angle (°)', 'FontName', 'Arial', 'FontSize', 11);
-    ylabel('Reflectance (%)', 'FontName', 'Arial', 'FontSize', 11);
-    title('c', 'FontName', 'Arial', 'FontSize', 12, 'FontWeight', 'bold', 'Position', [-8, 105]);
-    legend([h6, h7], 'Location', 'northwest', 'FontSize', 9, 'Box', 'off');
-    grid on; grid minor;
-    set(gca, 'GridAlpha', 0.3, 'MinorGridAlpha', 0.1);
-    xlim([0, 90]); ylim([0, 100]);
-    box on;
+    plot(theta_range * const.rad2deg, R_p * 100, 'r--', 'LineWidth', 2, 'DisplayName', 'R_p');
+    xlabel('入射角 (度)', 'FontSize', 12);
+    ylabel('反射率 (%)', 'FontSize', 12);
+    title('反射率随入射角变化', 'FontSize', 14, 'FontWeight', 'bold');
+    legend('Location', 'best');
+    grid on;
+    xlim([0, 90]);
     
     % 子图4: 相位
     subplot(2, 3, 4);
