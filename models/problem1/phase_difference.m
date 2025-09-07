@@ -16,9 +16,7 @@ function delta = phase_difference(thickness, n_epi, lambda, theta_i)
 % 数学公式:
 %   delta = (4*π*n_epi*d*cos(theta_t))/λ + φ1 - φ2
 %   其中 φ1, φ2 是界面反射引起的相位变化
-%
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
     % 输入参数验证
     if nargin < 4

@@ -20,9 +20,7 @@ function [r_s, r_p, t_s, t_p] = fresnel_formula(n1, n2, theta_i)
 %   r_p = (n2*cos(theta_i) - n1*cos(theta_t)) / (n2*cos(theta_i) + n1*cos(theta_t))
 %   t_s = 2*n1*cos(theta_i) / (n1*cos(theta_i) + n2*cos(theta_t))
 %   t_p = 2*n1*cos(theta_i) / (n2*cos(theta_i) + n1*cos(theta_t))
-%
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
     % 输入参数验证
     if nargin < 3

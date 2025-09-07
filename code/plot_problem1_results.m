@@ -13,16 +13,22 @@ function plot_problem1_results(varargin)
 %   plot_problem1_results('save', true)       % 保存图形
 %   plot_problem1_results('show_all', true)   % 显示所有子图
 
+    % 添加color目录到路径
+    addpath('../color');
+    
     % 解析输入参数
     p = inputParser;
     addParameter(p, 'save', false, @islogical);
     addParameter(p, 'show_all', true, @islogical);
-    addParameter(p, 'save_path', 'results/figures/', @ischar);
-    addParameter(p, 'figure_format', 'png', @ischar);
+    addParameter(p, 'save_path', '../figures/', @ischar);
+    addParameter(p, 'figure_format', 'eps', @ischar);
     addParameter(p, 'dpi', 300, @isnumeric);
     parse(p, varargin{:});
     
     options = p.Results;
+    
+    % 设置Nature期刊风格
+    setup_plot_style();
     
     % 加载常数和参数
     const = constants();
@@ -110,7 +116,19 @@ function plot_fresnel_coefficients(const, params, options)
     
     % 子图1: 反射系数幅值
     subplot(2, 3, 1);
-    plot(theta_range * const.rad2deg, abs(r_s_air_sic), 'b-', 'LineWidth', 2, 'DisplayName', 'r_s (空气-SiC)');
+    try
+        plot(theta_range * const.rad2deg, abs(r_s_air_sic), 'Color', color51(5), 'LineWidth', 2, 'DisplayName', 'r_s (空气-SiC)');
+        hold on;
+        plot(theta_range * const.rad2deg, abs(r_p_air_sic), 'Color', color51(13), 'LineWidth', 2, 'DisplayName', 'r_p (空气-SiC)');
+        plot(theta_range * const.rad2deg, abs(r_s_sic_si), 'Color', color51(51), 'LineWidth', 2, 'DisplayName', 'r_s (SiC-Si)');
+        plot(theta_range * const.rad2deg, abs(r_p_sic_si), 'Color', color51(45), 'LineWidth', 2, 'DisplayName', 'r_p (SiC-Si)');
+    catch
+        plot(theta_range * const.rad2deg, abs(r_s_air_sic), 'b-', 'LineWidth', 2, 'DisplayName', 'r_s (空气-SiC)');
+        hold on;
+        plot(theta_range * const.rad2deg, abs(r_p_air_sic), 'r-', 'LineWidth', 2, 'DisplayName', 'r_p (空气-SiC)');
+        plot(theta_range * const.rad2deg, abs(r_s_sic_si), 'g-', 'LineWidth', 2, 'DisplayName', 'r_s (SiC-Si)');
+        plot(theta_range * const.rad2deg, abs(r_p_sic_si), 'm-', 'LineWidth', 2, 'DisplayName', 'r_p (SiC-Si)');
+    end
     hold on;
     plot(theta_range * const.rad2deg, abs(r_p_air_sic), 'r--', 'LineWidth', 2, 'DisplayName', 'r_p (空气-SiC)');
     plot(theta_range * const.rad2deg, abs(r_s_sic_si), 'g:', 'LineWidth', 2, 'DisplayName', 'r_s (SiC-Si)');
@@ -209,9 +227,8 @@ function plot_fresnel_coefficients(const, params, options)
     sgtitle('菲涅尔公式分析结果', 'FontSize', 16, 'FontWeight', 'bold');
     
     if options.save
-        filename = fullfile(options.save_path, ['fresnel_coefficients.' options.figure_format]);
-        print(fig1, filename, ['-d' options.figure_format], ['-r' num2str(options.dpi)]);
-        fprintf('菲涅尔系数图已保存: %s\n', filename);
+        filename = fullfile(options.save_path, 'fresnel_coefficients');
+        save_figure(fig1, filename, {options.figure_format});
     end
 end
 
@@ -952,4 +969,56 @@ function results = calculate_problem1_results(const, params)
     save('results/problem1_results.mat', 'results');
     
     fprintf('第一问结果计算完成\n');
+end
+
+function setup_plot_style()
+% 设置Nature期刊风格的图表样式
+    
+    % 设置默认字体
+    set(0, 'DefaultAxesFontName', 'Arial');
+    set(0, 'DefaultAxesFontSize', 12);
+    set(0, 'DefaultTextFontName', 'Arial');
+    set(0, 'DefaultTextFontSize', 12);
+    
+    % 设置图表尺寸
+    set(0, 'DefaultFigurePosition', [100, 100, 800, 600]);
+    set(0, 'DefaultFigurePaperPositionMode', 'auto');
+    
+    % 使用color51配色方案
+    try
+        colors = [color51(5); color51(13); color51(51); color51(45); color51(22); color51(30)];
+        set(0, 'DefaultAxesColorOrder', colors);
+    catch
+        % 如果color51不可用，使用默认配色
+        colors = [0.2, 0.4, 0.8;    % 蓝色
+                  0.8, 0.2, 0.2;    % 红色
+                  0.2, 0.8, 0.2;    % 绿色
+                  0.8, 0.6, 0.2;    % 橙色
+                  0.6, 0.2, 0.8;    % 紫色
+                  0.2, 0.8, 0.8];   % 青色
+        set(0, 'DefaultAxesColorOrder', colors);
+    end
+end
+
+function save_figure(fig_handle, filename, formats)
+% 保存图表为多种格式
+    if nargin < 3
+        formats = {'eps', 'pdf', 'png'};
+    end
+    
+    for i = 1:length(formats)
+        format = formats{i};
+        full_filename = sprintf('%s.%s', filename, format);
+        
+        switch lower(format)
+            case 'eps'
+                print(fig_handle, full_filename, '-depsc', '-r300');
+            case 'pdf'
+                print(fig_handle, full_filename, '-dpdf', '-r300');
+            case 'png'
+                print(fig_handle, full_filename, '-dpng', '-r300');
+        end
+    end
+    
+    fprintf('图表已保存: %s\n', filename);
 end
