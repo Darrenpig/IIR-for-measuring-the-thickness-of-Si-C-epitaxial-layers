@@ -18,9 +18,7 @@ function [analysis_results, model_recommendations] = si_data_analyzer(data_files
 %   3. 多光束vs双光束条件评估
 %   4. 模型参数优化建议
 %   5. 测量条件评估
-%
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
     % 输入参数验证
     if nargin < 2

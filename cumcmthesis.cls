@@ -98,9 +98,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 {\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}
 
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
-
-
-
 \RequirePackage{fontspec}
 \newfontfamily\yaheiconsola{YaHei.Consolas.1.11b.ttf}
 \setmonofont[

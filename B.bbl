@@ -1,0 +1,104 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}\else
+  \providecommand\doi[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}\fi
+
+\bibitem[Sun et~al.(2023)Sun, Li, Zhang, Song, and Zhai]{Sun2023AnIM}
+SUN~J, LI~Z, ZHANG~H, et~al.
+\newblock An improved method for measuring epi-wafer thickness based on the
+  infrared interference principle: Addressing interference quality and multiple
+  interferences in double-layer structures\allowbreak[J/OL].
+\newblock Results in Physics, 2023.
+\newblock \url{https://api.semanticscholar.org/CorpusID:264902747}.
+
+\bibitem[Huang et~al.(2024)Huang, Tu, Di, Wang, Su, and
+  Bi]{Huang2024LargeAreaTM}
+HUANG~W, TU~Z, DI~Z, et~al.
+\newblock Large-area thickness measurement of transparent films based on a
+  multichannel spectral interference sensor\allowbreak[J/OL].
+\newblock Applied Sciences, 2024.
+\newblock \url{https://api.semanticscholar.org/CorpusID:268779720}.
+
+\bibitem[Senitzky et~al.(1981)Senitzky and Weeks]{Senitzky1981InfraredRS}
+SENITZKY~B, WEEKS~S~P.
+\newblock Infrared reflectance spectra of thin epitaxial silicon
+  layers\allowbreak[J/OL].
+\newblock Journal of Applied Physics, 1981, 52:\penalty0 5308-5314.
+\newblock \url{https://api.semanticscholar.org/CorpusID:120660671}.
+
+\bibitem[Schumann(1969)]{Schumann1969The}
+SCHUMANN~P~A.
+\newblock The infrared interference method of measuring epitaxial layer
+  thickness\allowbreak[J/OL].
+\newblock Journal of The Electrochemical Society, 1969, 116:\penalty0 409-413.
+\newblock DOI: \doi{10.1149/1.2411860}.
+
+\bibitem[Grunewald et~al.(2020)Grunewald, Wurm, Teichert, Bodermann, Reck, and
+  Richter]{10.1088/1361-6501/ab95da}
+GRUNEWALD~T, WURM~M, TEICHERT~S, et~al.
+\newblock Measurement of layer thicknesses with an improved optimization method
+  for depolarizing mueller matrices\allowbreak[J/OL].
+\newblock Measurement Science and Technology, 2020, 31\penalty0
+  (11)\allowbreak[2025-09-05].
+\newblock \url{https://iopscience.iop.org/article/10.1088/1361-6501/ab95da}.
+
+\bibitem[Claude(2025)]{Claude2025}
+CLAUDE.
+\newblock Claude-3.5-sonnet\allowbreak[M].
+\newblock 北京: Anthropic, 2025.
+
+\bibitem[Trae-AI(2025)]{TraeAI2025}
+TRAE-AI.
+\newblock Trae AI IDE集成版本\allowbreak[M].
+\newblock 北京: Bytedance, 2025.
+
+\bibitem[钮应喜\ 等(2023)钮应喜, 刘敏, 袁松, 赵丽霞, 丁雄杰,
+  吴会旺, 仇光寅, 李素青, 李京波, 张会娟, 赵跃, 彭铁坤,
+  雷浩东, and 闫果果]{SCSF00089461}
+钮应喜, 刘敏, 袁松, 等.
+\newblock 碳化硅外延层厚度的测试红外反射法\allowbreak[S].
+\newblock GB/T42905-2023.
+\newblock 北京:
+  国家市场监督管理总局;国家标准化管理委员会, 2023.
+
+\bibitem[徐继平\ 等(2021)徐继平, 宁永铎, 卢立延, 孙燕,
+  张海英, 由佰玲, 潘金平, 李扬, 胡晓亮, 张雪囡, 楼春兰, and
+  盘健冰]{SCSF00073691}
+徐继平, 宁永铎, 卢立延, 等.
+\newblock 硅片表面薄膜厚度的测试光学反射法\allowbreak[S].
+\newblock GB/T40279-2021.
+\newblock 北京:
+  国家市场监督管理总局;国家标准化管理委员会, 2021.
+
+\bibitem[陈小龙\ 等(2015)陈小龙, 郑红军, 张玮, and
+  郭钰]{SCSF00045921}
+陈小龙, 郑红军, 张玮, 等.
+\newblock 碳化硅单晶片平整度测试方法\allowbreak[S].
+\newblock GB/T32278-2015.
+\newblock 北京:
+  中华人民共和国国家质量监督检验检疫总局;中国国家标准化管理委员会,
+  2015.
+
+\bibitem[李慎重\ 等(2010)李慎重, 何良恩, 许峰, 刘培东, and
+  何秀坤]{SCSF00036457}
+李慎重, 何良恩, 许峰, 等.
+\newblock
+  重掺杂衬底上轻掺杂硅外延层厚度的红外反射测量方法\allowbreak[S].
+\newblock GB/T14847-2010.
+\newblock 北京:
+  中华人民共和国国家质量监督检验检疫总局;中国国家标准化管理委员会,
+  2010.
+
+\bibitem[王彤涵(2006)]{SCSF00012172}
+王彤涵.
+\newblock 砷化镓外延层厚度红外干涉测量方法\allowbreak[S].
+\newblock GB/T8758-2006.
+\newblock 北京:
+  中华人民共和国国家质量监督检验检疫总局;中国国家标准化管理委员会,
+  2006.
+
+\end{thebibliography}

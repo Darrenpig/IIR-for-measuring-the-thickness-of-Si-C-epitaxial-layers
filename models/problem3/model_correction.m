@@ -21,7 +21,7 @@ function [corrected_thickness, correction_factors] = model_correction(original_t
 %   1. Airy函数修正 - 基于Airy函数的多光束干涉理论
 %   2. Fabry-Perot修正 - 考虑多次反射的F-P干涉仪模型
 %   3. 多次反射修正 - 逐级计算多次反射贡献
-%
+
 
 
     % 输入参数验证

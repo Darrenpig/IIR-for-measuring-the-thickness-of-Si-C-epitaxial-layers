@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.11)  5 SEP 2025 22:06
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.11)  7 SEP 2025 01:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1223,92 +1223,92 @@ Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
 \l__siunitx_unit_total_int=\count420
 )
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 38.
+h' as default language. on input line 37.
 
 (./template.aux)
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
 \symlegacymaths=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 38.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 38.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 38.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 38.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 38.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 38.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 38.
-LaTeX Font Info:    Redeclaring math accent \check on input line 38.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 38.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 38.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 38.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 38.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 37.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 37.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 37.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 37.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 37.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 37.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 37.
+LaTeX Font Info:    Redeclaring math accent \check on input line 37.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 37.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 37.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 37.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 37.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 37.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 38.
+(Font)              `operators' in the math version `normal' on input line 37.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> TU/TimesNewRoman(0)/m/n on input line 3
-8.
+7.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 38.
+(Font)              `operators' in the math version `bold' on input line 37.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/m/n on input line 
-38.
+37.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/m/n on 
-input line 38.
+input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/TimesNewRoman(0)/m/it on input line
- 38.
+ 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/b/n on input line 
-38.
+37.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/Arial(0)/m/n on input line 38.
+(Font)                  OT1/cmss/m/n --> TU/Arial(0)/m/n on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> TU/YaHei.Consolas.1.11b.ttf(1)/m/n on 
-input line 38.
+input line 37.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/b/n on 
-input line 38.
+input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> TU/TimesNewRoman(0)/b/it on input lin
-e 38.
+e 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/Arial(0)/b/n on input line 38.
+(Font)                  OT1/cmss/bx/n --> TU/Arial(0)/b/n on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/YaHei.Consolas.1.11b.ttf(1)/b/n on 
-input line 38.
+input line 37.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1348,20 +1348,20 @@ input line 38.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 38.
+Package hyperref Info: Link coloring ON on input line 37.
 (./template.out) (./template.out)
 \@outlinefile=\write5
 \openout5 = `template.out'.
 
-LaTeX Info: Redefining \celsius on input line 38.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 38.
+LaTeX Info: Redefining \celsius on input line 37.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 37.
 
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 38.
-Package gensymb Info: Using \Omega for \ohm on input line 38.
+LaTeX Info: Redefining \ohm on input line 37.
+Package gensymb Info: Using \Omega for \ohm on input line 37.
 
 Package gensymb Warning: Not defining \micro.
 
@@ -1372,15 +1372,15 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 38.
-LaTeX Font Info:    Calculating math sizes for size <12.05> on input line 44.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
+or `english'. on input line 37.
+LaTeX Font Info:    Calculating math sizes for size <12.05> on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
 
 
 (d:/Work_dev/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
 
 
 (d:/Work_dev/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1388,7 +1388,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 LaTeX Font Warning: Font shape `TU/SimHei(0)/b/n' undefined
-(Font)              using `TU/SimHei(0)/m/n' instead on input line 50.
+(Font)              using `TU/SimHei(0)/m/n' instead on input line 49.
 
 
 
@@ -1399,6 +1399,14 @@ LaTeX Font Warning: Font shape `TU/SimHei(0)/b/n' undefined
 [2]
 
 [3]
+File: figures/AMCMUM.pdf Graphic file (type pdf)
+<use figures/AMCMUM.pdf>
+
+
+LaTeX Font Warning: Font shape `TU/SimSun(1)/b/n' undefined
+(Font)              using `TU/SimSun(1)/m/n' instead on input line 140.
+
+
 
 [4]
 
@@ -1409,44 +1417,135 @@ LaTeX Font Warning: Font shape `TU/SimHei(0)/b/n' undefined
 [7]
 
 [8]
+File: results/figures/reflectance_spectrum.eps Graphic file (type eps)
+<results/figures/reflectance_spectrum.eps>
+
 
 [9]
+File: results/figures/data_quality.eps Graphic file (type eps)
+<results/figures/data_quality.eps>
+
 
 [10]
+File: figures/phase_difference_analysis.eps Graphic file (type eps)
+<figures/phase_difference_analysis.eps>
+
 
 [11]
+File: figures/phase_difference_analysis.eps Graphic file (type eps)
+<figures/phase_difference_analysis.eps>
+
 
 [12]
-Missing character: There is no 第 (U+7B2C) in font Times New Roman/OT:script=lat
-n;language=dflt;mapping=tex-text;!
-File: figures/AMCMUM.pdf Graphic file (type pdf)
-<use figures/AMCMUM.pdf>
-
-LaTeX Font Warning: Font shape `TU/SimSun(1)/b/n' undefined
-(Font)              using `TU/SimSun(1)/m/n' instead on input line 679.
-
-
 
 [13]
 
 [14]
+File: figures/thickness_interference_relation.eps Graphic file (type eps)
+<figures/thickness_interference_relation.eps>
+
 
 [15]
+File: results/figures/thickness_comparison.eps Graphic file (type eps)
+<results/figures/thickness_comparison.eps>
+File: results/figures/angle_dependency.eps Graphic file (type eps)
+<results/figures/angle_dependency.eps>
+
 
 [16]
-No file template.bbl.
+File: results/figures/error_analysis.eps Graphic file (type eps)
+<results/figures/error_analysis.eps>
 
 
-[17] (d:/Work_dev/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
+[17]
+File: results/figures/method_comparison.eps Graphic file (type eps)
+<results/figures/method_comparison.eps>
+
+
+[18]
+File: figures/AMCMUM2.pdf Graphic file (type pdf)
+<use figures/AMCMUM2.pdf>
+
+
+[19]
+File: figures/reflectance_spectrum.eps Graphic file (type eps)
+<figures/reflectance_spectrum.eps>
+
+
+[20]
+File: figures/fresnel_coefficients.eps Graphic file (type eps)
+<figures/fresnel_coefficients.eps>
+
+
+[21]
+File: figures/thickness_comparison.eps Graphic file (type eps)
+<figures/thickness_comparison.eps>
+
+
+[22]
+File: figures/method_comparison.eps Graphic file (type eps)
+<figures/method_comparison.eps>
+
+
+[23]
+
+[24]
+File: figures/phase_difference_analysis.eps Graphic file (type eps)
+<figures/phase_difference_analysis.eps>
+File: figures/error_analysis.eps Graphic file (type eps)
+<figures/error_analysis.eps>
+
+
+[25]
+File: figures/thickness_interference_relation.eps Graphic file (type eps)
+<figures/thickness_interference_relation.eps>
+
+
+[26]
+File: figures/reflectance_spectrum.eps Graphic file (type eps)
+<figures/reflectance_spectrum.eps>
+
+
+[27]
+Overfull \hbox (6.6097pt too wide) in paragraph at lines 741--742
+[]\TU/SimSun(0)/m/n/12.05 反 射 光 谱 呈 现 清 晰 的 多 光 束 干 涉 结 构：|  峰 值 位 于 \TU/TimesN
+ewRoman(0)/m/n/12.05 490.1\TU/SimSun(0)/m/n/12.05 、| \TU/TimesNewRoman(0)/m/n/1
+2.05 587.4\TU/SimSun(0)/m/n/12.05 、| \TU/TimesNewRoman(0)/m/n/12.05 684.7\TU/Si
+mSun(0)/m/n/12.05 、| \TU/TimesNewRoman(0)/m/n/12.05 785.6\TU/SimSun(0)/m/n/12.0
+5 、| \TU/TimesNewRoman(0)/m/n/12.05 882.9 cm$[]$\TU/SimSun(0)/m/n/12.05 ，|
+ []
+
+(./template.bbl
+
+[28])
+
+[29] (d:/Work_dev/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 771.
 
-Package caption Warning: Unused \captionsetup[sub] on input line 16.
-See the caption package documentation for explanation.
+(./code/model.m
 
+[30]
 
+[31]
 
-[18] (./template.aux)
+[32]
+
+[33]) (./code/thickness_calc.m
+
+[34]
+
+[35]
+
+[36]
+
+[37]
+
+[38])
+
+[39] (./template.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2022/08/05>
@@ -1455,16 +1554,19 @@ L3 programming layer <2022/08/05>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: 2B3FC1345A196CBF849FEF42D0E03753;3168.
+(rerunfilecheck)             Checksum: AF2CA9AADAAA2E1D9F3549864FCCA275;2893.
  ) 
 Here is how much of TeX's memory you used:
- 38813 strings out of 473832
- 865027 string characters out of 5729027
- 1506966 words of memory out of 5000000
- 61212 multiletter control sequences out of 15000+600000
- 582887 words of font info for 197 fonts, out of 8000000 for 9000
+ 38815 strings out of 473832
+ 859349 string characters out of 5729027
+ 1680594 words of memory out of 5000000
+ 61209 multiletter control sequences out of 15000+600000
+ 568922 words of font info for 138 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 108i,11n,125p,466b,1702s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,12n,125p,525b,3258s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on template.pdf (18 pages).
+Output written on template.pdf (39 pages).

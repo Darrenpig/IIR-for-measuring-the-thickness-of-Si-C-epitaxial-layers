@@ -19,8 +19,7 @@ function [thickness, relation_func] = thickness_relation(wavenumber, reflectance
 %   当相位差 δ = (2m+1)π 时出现反射极小
 %   厚度公式: d = (P_i - 0.5) * λ_i / (2 * n_epi * cos(θ_t))
 %
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
     % 输入参数验证
     if nargin < 4

@@ -23,10 +23,6 @@ function [is_multi_beam, analysis_results] = multi_beam_conditions(wavenumber, r
 %   3. 相位相干性
 %   4. 多次反射强度比
 %   5. 光学厚度条件
-%
-% 作者: CUMCU数学建模团队
-% 日期: 2024
-
     % 输入参数验证
     if nargin < 3
         error('multi_beam_conditions:InvalidInput', '至少需要波数、反射率和角度参数');
