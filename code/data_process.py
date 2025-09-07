@@ -428,7 +428,7 @@ def main():
     processor = DataProcessor()
     
     # 示例：处理附件1数据
-    file_path = "../附件1.xlsx"  # 相对于code目录的路径
+file_path = "../data/附件1.xlsx"  # 相对于code目录的路径
     
     if processor.load_excel_data(file_path):
         # 数据质量检查

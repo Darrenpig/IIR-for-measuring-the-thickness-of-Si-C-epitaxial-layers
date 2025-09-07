@@ -20,8 +20,7 @@ function [spectrum_data, metadata] = data_loader(file_path, angle, material_type
 %     .num_points - 数据点数
 %   metadata - 元数据信息
 %
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
     % 输入参数验证
     if nargin < 1

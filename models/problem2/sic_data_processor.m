@@ -19,8 +19,7 @@ function [processed_data, processing_results] = sic_data_processor(data_files, a
 %   4. 可靠性分析
 %   5. 结果对比和验证
 %
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
     % 输入参数验证
     if nargin < 2

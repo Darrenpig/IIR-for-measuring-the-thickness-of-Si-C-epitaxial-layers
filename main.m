@@ -1,6 +1,4 @@
 %% 红外干涉法碳化硅外延层厚度测量 - 主程序
-% 作者：CUMCU团队
-% 日期：2024
 % 描述：基于红外干涉法的SiC外延层厚度测量系统主程序
 
 function main()
@@ -9,11 +7,7 @@ function main()
     
     % 添加项目路径
     addpath(genpath(pwd));
-    
-    % 显示欢迎信息
-    fprintf('=== 红外干涉法碳化硅外延层厚度测量系统 ===\n');
-    fprintf('系统初始化中...\n');
-    
+
     % 加载配置参数
     constants = load_constants();
     params = load_parameters();
@@ -27,7 +21,14 @@ function main()
         fprintf('4. 运行所有问题\n');
         fprintf('0. 退出\n');
         
-        choice = input('请输入选择 (0-4): ');
+        % 检查是否在批处理模式下运行
+        if exist('OCTAVE_VERSION', 'builtin') || usejava('desktop') == 0
+            % 批处理模式：自动运行所有问题
+            choice = 4;
+        else
+            % 交互模式：用户选择
+            choice = input('请输入选择 (0-4): ');
+        end
         
         switch choice
             case 1
@@ -74,8 +75,8 @@ function run_problem2(constants, params)
     fprintf('\n=== 问题二：厚度确定算法 ===\n');
     
     % 加载SiC数据
-    data1 = load_excel_data('data/raw/attachment1.xlsx');
-    data2 = load_excel_data('data/raw/attachment2.xlsx');
+    data1 = load_excel_data('data/附件1.xlsx');
+    data2 = load_excel_data('data/附件2.xlsx');
     
     % 处理SiC数据
     thickness1 = thickness_algorithm(data1.wavenumber, data1.reflectance, 10, constants.n_sic);
@@ -98,8 +99,8 @@ function run_problem3(constants, params)
     fprintf('\n=== 问题三：多光束干涉分析 ===\n');
     
     % 加载硅片数据
-    si_data1 = load_excel_data('data/raw/attachment3.xlsx');
-    si_data2 = load_excel_data('data/raw/attachment4.xlsx');
+    si_data1 = load_excel_data('data/附件3.xlsx');
+    si_data2 = load_excel_data('data/附件4.xlsx');
     
     % 多光束干涉条件判断
     is_multi_beam1 = multi_beam_conditions(si_data1.reflectance, params.multi_beam_threshold);

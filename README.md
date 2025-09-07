@@ -42,8 +42,10 @@ B/
 │   ├── plot_utils.m         # 绘图工具
 │   └── math_utils.m         # 数学工具
 ├── data/                     # 数据目录
-│   ├── raw/                 # 原始数据
-│   ├── processed/           # 处理后数据
+│   ├── 附件1.xlsx           # SiC晶圆片10°入射角数据
+│   ├── 附件2.xlsx           # SiC晶圆片15°入射角数据
+│   ├── 附件3.xlsx           # Si晶圆片10°入射角数据
+│   ├── 附件4.xlsx           # Si晶圆片15°入射角数据
 │   └── README.md            # 数据说明
 ├── results/                  # 计算结果
 │   ├── problem1/            # 问题一结果
@@ -78,7 +80,7 @@ main();
 
 ```matlab
 % 加载数据
-[data, info] = data_loader('data/raw/your_spectrum.xlsx');
+[data, info] = data_loader('data/附件1.xlsx');
 
 % 执行厚度测量
 angle = 45; % 入射角度（度）
@@ -213,7 +215,7 @@ fprintf('测试通过率: %.1f%%\n', ...
 
 ```matlab
 % 加载SiC外延层光谱数据
-[data, ~] = data_loader('data/raw/sic_sample_001.xlsx');
+[data, ~] = data_loader('data/附件1.xlsx');
 
 % 设置测量参数
 angle = 45;  % 入射角
@@ -231,7 +233,7 @@ fprintf('SiC外延层厚度: %.3f ± %.3f μm\n', ...
 
 ```matlab
 % 批量处理多个样品
-data_files = dir('data/raw/*.xlsx');
+data_files = dir('data/*.xlsx');
 results = cell(length(data_files), 1);
 
 for i = 1:length(data_files)

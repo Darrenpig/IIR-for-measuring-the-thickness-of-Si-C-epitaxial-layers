@@ -4,18 +4,17 @@ function params = parameters()
 % 输出参数:
 %   params - 包含所有系统参数的结构体
 %
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
     % 测量角度设置
     params.incident_angles = [10, 15];  % 入射角度 (度)
     
     % 数据文件配置
     params.data_files = {
-        'attachment1.xlsx',  % SiC 10度数据
-        'attachment2.xlsx',  % SiC 15度数据
-        'attachment3.xlsx',  % Si 10度数据
-        'attachment4.xlsx'   % Si 15度数据
+        'data/附件1.xlsx',  % SiC 10度数据
+'data/附件2.xlsx',  % SiC 15度数据
+'data/附件3.xlsx',  % Si 10度数据
+'data/附件4.xlsx'   % Si 15度数据
     };
     
     % 数据处理参数

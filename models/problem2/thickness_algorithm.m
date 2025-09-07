@@ -19,8 +19,7 @@ function [thickness, results] = thickness_algorithm(wavenumber, reflectance, ang
 %   2. 相位拟合法：拟合相位-波数关系
 %   3. 傅里叶变换法：频域分析周期性
 %
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
     % 输入参数验证和默认值设置
     if nargin < 3

@@ -1,8 +1,7 @@
 % RUN_PROBLEM2 - 运行问题二的所有计算
 % 这个脚本调用问题二的所有函数并生成结果
 %
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
 clc; clear; close all;
 
@@ -14,8 +13,8 @@ addpath(genpath('.'));
 
 try
     % 1. 读取附件1数据
-    fprintf('\n1. 读取附件1数据...\n');
-    data_file = '../附件1.xlsx';
+fprintf('\n1. 读取附件1数据...\n');
+data_file = '../data/附件1.xlsx';
     
     % 使用excel_reader读取数据
     addpath('../utils');

@@ -4,8 +4,7 @@ function constants = constants()
 % 输出参数:
 %   constants - 包含所有物理常数的结构体
 %
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
     % 基本物理常数
     constants.c = 2.998e8;              % 光速 (m/s)

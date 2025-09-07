@@ -1,0 +1,36 @@
+MATLAB绘图代码整理日志
+整理时间: 07-Sep-2025 18:01:17
+========================================
+
+核心绘图文件 (移动到 plotting/core/):
+  - plot_problem1_results.m: 问题一结果绘图函数
+  - plot_problem2_results.m: 问题二结果绘图函数
+  - plot_problem3_results.m: 问题三结果绘图函数
+  - plot_problem3_advanced.m: 问题三高级绘图技术
+
+工具文件 (复制到 plotting/utils/):
+  - ../utils/plot_utils.m: 绘图工具函数集合
+  - ../utils/plot_spectrum.m: 光谱数据绘图函数
+
+归档文件 (移动到 archive/plotting/):
+  - plot_all_with_color51.m -> color_variants/: 使用color51配色重绘所有图表
+  - plot_with_color51.m -> color_variants/: 使用color51配色的基础绘图
+  - redraw_figure2_figure3.m -> specific_purpose/: 重绘特定图表
+  - compare_problem3_plots.m -> specific_purpose/: 问题三绘图对比
+  - image_analysis.m -> development/: 图像分析相关
+
+新目录结构:
+plotting/
+├── core/
+│   ├── plot_problem1_results.m
+│   ├── plot_problem2_results.m
+│   ├── plot_problem3_results.m
+│   └── plot_problem3_advanced.m
+└── utils/
+    ├── plot_utils.m
+    └── plot_spectrum.m
+
+archive/plotting/
+├── color_variants/
+├── specific_purpose/
+└── development/

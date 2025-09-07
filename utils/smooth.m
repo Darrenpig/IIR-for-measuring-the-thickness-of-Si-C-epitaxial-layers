@@ -11,8 +11,7 @@ function smoothed_data = smooth(data, window_size)
 % 输出参数:
 %   smoothed_data - 平滑后的数据
 %
-% 作者: CUMCU数学建模团队
-% 日期: 2024
+
 
     if nargin < 2
         window_size = 5;
